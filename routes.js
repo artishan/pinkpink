@@ -23,7 +23,7 @@ module.exports = function(app){
                 if(u.length == 1){
                     voted_on = u[0].votes;
                 }
-
+                
                 // Find which photos the user hasn't still voted on
 
                 var not_voted_on = all_photos.filter(function(photo){
@@ -49,12 +49,8 @@ module.exports = function(app){
 
         photos.find({}, function(err, all_photos){
 
-            // Sort the photos 
-            console.log('all_photos  함수');
-            console.log(all_photos);
+            // Sort the photos
             all_photos.sort(function(p1, p2){
-                console.log(p1,p2);
-                console.log((p2.likes - p2.dislikes) - (p1.likes - p1.dislikes));
                 return (p2.likes - p2.dislikes) - (p1.likes - p1.dislikes);
             });
 
