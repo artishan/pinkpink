@@ -1,25 +1,25 @@
 <nav>
-    <a class="active" href="./">Game</a>
-    <a href="./standings">Standings</a>
+    <a class="active" href="./">투표하기</a>
+    <a href="./standings">점수판</a>
 </nav>
 
 {{#if photo}}
 
-    <img src="photos/{{photo.name}}" alt="Vote Picture" />
+    <img class="image-vote" src="photos/{{photo.name}}" alt="Vote Picture" />
 
     <div class="button-holder">
         <form action="./cute" method="post">
             <input type="hidden" name="photo" value="{{photo.name}}" />
-            <input type="submit" value="Cute!" />
+            <input type="submit" value="기욤!" />
         </form>
         <form action="./notcute" method="post">
             <input type="hidden" name="photo" value="{{photo.name}}" />
-            <input type="submit" value="Not Cute!" />
+            <input type="submit" value="안기욤!" />
         </form>
     </div>
 
 {{else}}
 
-    <h3>No more photos to vote on! Check out the <a href="./standings">standings</a>.</h3>
+    <h3>더이상 볼 사진이 없으니 <a href="./standings">점수판</a>을 확인하세요.</h3>
 
 {{/if}}
