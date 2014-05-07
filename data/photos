@@ -1,9 +1,3 @@
-{"name":"A1iEFaUCMAAh29U.jpg","likes":0,"dislikes":0,"_id":"CdiqamtFzlAOnuaV"}
-{"name":"1326344841_5HrI7s8S_SAM_7218.jpg","likes":0,"dislikes":0,"_id":"DC6fDpjOw1qosUDK"}
-{"name":".DS_Store","likes":0,"dislikes":0,"_id":"Mgx7Qvd9y5lKNqd4"}
-{"name":"d0118223_4fd4ae76f12d3.jpg","likes":0,"dislikes":0,"_id":"VLR7uhBYzNLVTZGv"}
+{"name":"family.jpg","likes":1,"dislikes":1,"_id":"VmxeEsj8DNQewjz8"}
+{"name":"cat.jpg","likes":2,"dislikes":0,"_id":"ujBCnhhfIuVWc3SB"}
 {"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}
-{"name":".DS_Store","likes":0,"dislikes":1,"_id":"Mgx7Qvd9y5lKNqd4"}
-{"name":"d0118223_4fd4ae76f12d3.jpg","likes":1,"dislikes":0,"_id":"VLR7uhBYzNLVTZGv"}
-{"name":"1326344841_5HrI7s8S_SAM_7218.jpg","likes":0,"dislikes":1,"_id":"DC6fDpjOw1qosUDK"}
-{"name":"A1iEFaUCMAAh29U.jpg","likes":1,"dislikes":0,"_id":"CdiqamtFzlAOnuaV"}
