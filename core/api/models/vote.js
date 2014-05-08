@@ -14,10 +14,8 @@ photos.ensureIndex({fieldName: 'name', unique: true});
 users.ensureIndex({fieldName: 'ip', unique: true});
 
 // Load all images from the public/photos folder in the database
+var photos_on_disk = fs.readdirSync(path.join(__rootDir, '/upload/images_vote'));
 
-// TODO: image_vote path
-var photos_on_disk = fs.readdirSync( __rootDir + '/upload/images_vote');
-console.log( __rootDir + '/upload/images_vote' );
 // Insert the photos in the database. This is executed on every
 // start up of your application, but because there is a unique
 // constraint on the name field, subsequent writes will fail

@@ -1,8 +1,8 @@
-# node project filte
 node_modules
 public
 .tmp
 .sass-cache
+core/.tmp
 
 # bower config
 core/app/bower_components
