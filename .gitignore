@@ -1,8 +1,15 @@
+# node project filte
 node_modules
 public
 .tmp
 .sass-cache
-app/bower_components
-heroku
-/views
+
+# bower config
+core/app/bower_components
+
+# database, upload
+core/db
+core/upload/*
+
+# release file
 dist

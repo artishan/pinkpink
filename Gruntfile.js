@@ -21,8 +21,9 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      dist: 'dist',
+      core: 'core',
+      app: require('./bower.json').appPath || 'core/app'
     },
     express: {
       options: {
@@ -30,7 +31,7 @@ module.exports = function (grunt) {
       },
       dev: {
         options: {
-          script: 'server.js',
+          script: '<%= yeoman.core %>/server.js',
           debug: true
         }
       },
@@ -55,11 +56,11 @@ module.exports = function (grunt) {
         }
       },
       mochaTest: {
-        files: ['test/server/{,*/}*.js'],
+        files: ['<%= yeoman.core %>/test/server/{,*/}*.js'],
         tasks: ['env:test', 'mochaTest']
       },
       jsTest: {
-        files: ['test/client/spec/{,*/}*.js'],
+        files: ['<%= yeoman.core %>/test/client/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
@@ -83,8 +84,8 @@ module.exports = function (grunt) {
       },
       express: {
         files: [
-          'server.js',
-          'lib/**/*.{js,json}'
+          '<%= yeoman.core %>/server.js',
+          '<%= yeoman.core %>/lib/**/*.{js,json}'
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
@@ -102,16 +103,16 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          jshintrc: 'lib/.jshintrc'
+          jshintrc: '<%= yeoman.core %>/lib/.jshintrc'
         },
-        src: [ 'lib/{,*/}*.js']
+        src: [ '<%= yeoman.core %>/lib/{,*/}*.js']
       },
       all: [
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ],
       test: {
         options: {
-          jshintrc: 'test/client/.jshintrc'
+          jshintrc: '<%= yeoman.core %>/test/client/.jshintrc'
         },
         src: ['test/client/spec/{,*/}*.js']
       }
@@ -124,19 +125,10 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
+            '<%= yeoman.core %>/.tmp',
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*',
             '!<%= yeoman.dist %>/Procfile'
-          ]
-        }]
-      },
-      heroku: {
-        files: [{
-          dot: true,
-          src: [
-            'heroku/*',
-            '!heroku/.git*',
-            '!heroku/Procfile'
           ]
         }]
       },
@@ -151,7 +143,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '<%= yeoman.core %>/.tmp/styles/',
           src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
@@ -205,7 +197,7 @@ module.exports = function (grunt) {
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
+        cssDir: '<%= yeoman.core %>/.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
@@ -356,11 +348,21 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
+          cwd: 'core',
           dest: '<%= yeoman.dist %>',
           src: [
-            'package.json',
             'server.js',
-            'lib/**/*'
+            'lib/**/*',
+            'upload/**/*',
+            'db/**/*'
+          ]
+        }, {
+          expand: true,
+          dest: '<%= yeoman.dist %>',
+          src: [
+            'README.md',
+            'LICENSE',
+            'package.json'
           ]
         }]
       },
@@ -426,7 +428,7 @@ module.exports = function (grunt) {
     // Test settings
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: '<%= yeoman.core %>/test/karma.conf.js',
         singleRun: true
       }
     },
@@ -435,7 +437,7 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['test/server/**/*.js']
+      src: ['<%= yeoman.core %>/test/server/**/*.js']
     },
 
     env: {
@@ -530,11 +532,6 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
-
-  grunt.registerTask('heroku', function () {
-    grunt.log.warn('The `heroku` task has been deprecated. Use `grunt build` to build for deployment.');
-    grunt.task.run(['build']);
-  });
 
   grunt.registerTask('default', [
     'newer:jshint',
