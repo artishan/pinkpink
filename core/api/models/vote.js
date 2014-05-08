@@ -2,21 +2,22 @@
 
 // Require the nedb module
 var Datastore = require('nedb'),
-	path = require("path"),
-	__parentDir = path.dirname(module.parent.filename),
-    fs = require('fs');
+  path = require("path"),
+     fs = require('fs');
 
 // Initialize two nedb databases. Notice the autoload parameter.
-var photos = new Datastore({ filename: __parentDir + '/db/photos', autoload: true }),
-    users = new Datastore({ filename: __parentDir + '/db/users', autoload: true });
+var photos = new Datastore({ filename: __rootDir + '/db/photos', autoload: true }),
+    users = new Datastore({ filename: __rootDir + '/db/users', autoload: true });
 
 // Create a "unique" index for the photo name and user ip
 photos.ensureIndex({fieldName: 'name', unique: true});
 users.ensureIndex({fieldName: 'ip', unique: true});
 
 // Load all images from the public/photos folder in the database
-var photos_on_disk = fs.readdirSync( __parentDir + '/upload/images_vote');
 
+// TODO: image_vote path
+var photos_on_disk = fs.readdirSync( __rootDir + '/upload/images_vote');
+console.log( __rootDir + '/upload/images_vote' );
 // Insert the photos in the database. This is executed on every
 // start up of your application, but because there is a unique
 // constraint on the name field, subsequent writes will fail

@@ -1,7 +1,6 @@
 'use strict';
 
 var api = require('./controllers/api'),
-    vote = require('./controllers/vote'),
     index = require('./controllers'),
     users = require('./controllers/users'),
     session = require('./controllers/session'),
@@ -11,18 +10,6 @@ var api = require('./controllers/api'),
  * Application routes
  */
 module.exports = function(app) {
-
-  // Server API Routes
-  app.route('/api/awesomeThings')
-    .get(api.awesomeThings);
-
-  // vote API Routes
-  app.route('/api/vote/:score')
-    .post(vote.postVote);
-  app.route('/api/vote/view')
-    .get(vote.getView);
-  app.route('/api/vote/board')
-    .get(vote.getBoard);
 
   app.route('/api/users')
     .post(users.create)
@@ -36,11 +23,6 @@ module.exports = function(app) {
     .post(session.login)
     .delete(session.logout);
 
-  // All undefined api routes should return a 404
-  app.route('/api/*')
-    .get(function(req, res) {
-      res.send(404);
-    });
 
   // All other routes to use Angular routing in app/scripts/app.js
   app.route('/partials/*')
