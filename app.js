@@ -9,7 +9,6 @@
 //생성한 변수 명에다가 모듈을 할당한다.
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 

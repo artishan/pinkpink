@@ -19,7 +19,7 @@ module.exports = function(app){
         extname: ".html",
         layoutsDir: __dirname + '/views/layouts'
     }));
-
+    app.use(express.logger('tiny')); //?   
     // Set .html as the default template extension 
     app.set('view engine', 'html');
 

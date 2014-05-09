@@ -6,7 +6,8 @@
  * all the required libraries are downloaded and installed.
  */ 
 
-var express = require('express');
+var express = require('express'),
+	config = require('./config');
 
 // Create a new express.js web app:
 
@@ -15,7 +16,7 @@ var app = express();
 // Configure express with the settings found in
 // our config.js file
 
-require('./config')(app);
+config(app);
 
 // Add the routes that the app will react to,
 // as defined in our routes.js file
