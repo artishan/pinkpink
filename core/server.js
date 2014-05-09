@@ -1,9 +1,9 @@
 'use strict';
 
 var express = require('express'),
-    path = require('path'),
-    fs = require('fs'),
-    mongoose = require('mongoose');
+      path = require('path'),
+      fs = require('fs'),
+      mongoose = require('mongoose');
 
 /**
  * Main application file
@@ -15,11 +15,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('./config/config');
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
-// Bootstrap models
-var modelsPath = path.join(__dirname, 'lib/models');
-fs.readdirSync(modelsPath).forEach(function (file) {
+// Bootstrap mongodb models
+var mongooseModelsPath = path.join(__dirname, './models/mongoose');
+fs.readdirSync(mongooseModelsPath).forEach(function (file) {
   if (/(.*)\.(js$|coffee$)/.test(file)) {
-    require(modelsPath + '/' + file);
+    require(mongooseModelsPath + '/' + file);
   }
 });
 
@@ -32,8 +32,7 @@ var passport = require('./config/passport');
 // Setup Express
 var app = express();
 require('./config/express')(app);
-require('./api/routes')(app);
-require('./lib/routes')(app);
+require('./routes')(app);
 
 // Start server
 app.listen(config.port, config.ip, function () {

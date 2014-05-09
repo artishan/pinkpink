@@ -1,7 +1,7 @@
-node_modules
-public
-.tmp
+.git
 .sass-cache
+.tmp
+node_modules
 core/.tmp
 
 # bower config

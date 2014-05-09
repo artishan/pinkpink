@@ -34,9 +34,9 @@ module.exports = function(app) {
     });
 
     app.use(express.static(path.join(config.root, '.tmp')));
-    app.use(express.static(path.join(config.root, 'app')));
+    app.use(express.static(path.join(config.root, 'client')));
     app.use('/upload', express.static(path.join(config.root, 'upload')));
-    app.set('views', config.root + '/app/views');
+    app.set('views', config.root + '/client/views');
   }
 
   if ('production' === env) {
@@ -49,7 +49,7 @@ module.exports = function(app) {
 
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
-  app.use(morgan('tiny'));
+  app.use(morgan('dev'));
   app.use(bodyParser());
   app.use(methodOverride());
   app.use(cookieParser());

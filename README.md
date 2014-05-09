@@ -41,22 +41,8 @@ Alternatively to skip tests and jshint, use:
 grunt build
 ```
 
-## Generators
+## Test
 
-All of the **generator-angular** client side generators are available, but aliased with `angular-fullstack` to correctly generate with the fullstack folder structure.
-
-Angular sub-generators:
-
-* [angular-fullstack:controller](https://github.com/yeoman/generator-angular#controller)
-* [angular-fullstack:directive](https://github.com/yeoman/generator-angular#directive)
-* [angular-fullstack:filter](https://github.com/yeoman/generator-angular#filter)
-* [angular-fullstack:route](https://github.com/yeoman/generator-angular#route)
-* [angular-fullstack:service](https://github.com/yeoman/generator-angular#service)
-* [angular-fullstack:provider](https://github.com/yeoman/generator-angular#service)
-* [angular-fullstack:factory](https://github.com/yeoman/generator-angular#service)
-* [angular-fullstack:value](https://github.com/yeoman/generator-angular#service)
-* [angular-fullstack:constant](https://github.com/yeoman/generator-angular#service)
-* [angular-fullstack:decorator](https://github.com/yeoman/generator-angular#decorator)
-* [angular-fullstack:view](https://github.com/yeoman/generator-angular#view)
-
-
+```bash
+grunt test
+```

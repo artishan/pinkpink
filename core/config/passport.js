@@ -1,9 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+      User = mongoose.model('User'),
+      passport = require('passport'),
+      LocalStrategy = require('passport-local').Strategy;
 
 /**
  * Passport configuration
@@ -29,7 +29,7 @@ passport.use(new LocalStrategy({
       email: email.toLowerCase()
     }, function(err, user) {
       if (err) return done(err);
-      
+
       if (!user) {
         return done(null, false, {
           message: 'This email is not registered.'

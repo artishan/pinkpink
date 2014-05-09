@@ -1,14 +1,19 @@
 {
-  "name": "angularfullstack",
-  "version": "0.0.0",
+  "name": "pinkpink",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "HanSeungHo",
+    "email": "han@hansh.kr"
+  },
   "dependencies": {
-    "body-parser": "~1.0.0",
+    "body-parser": "~1.0",
     "compression": "~1.0.1",
-    "connect-mongo": "mrzepinski/connect-mongo#2135988",
-    "cookie-parser": "~1.0.1",
-    "ejs": "~0.8.4",
+    "connect-mongo": "~0.4",
+    "cookie-parser": "~1.0",
+    "ejs": "~1.0.0",
     "errorhandler": "~1.0.0",
-    "express": "~4.0.0",
+    "express": "~4.1",
     "express-session": "~1.0.2",
     "lodash": "~2.4.1",
     "method-override": "~1.0.0",
@@ -69,10 +74,20 @@
     "grunt-nodemon": "~0.2.0",
     "open": "~0.0.4"
   },
+
+  "license": "MIT",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
+    "build": "grunt build",
+    "server": "grunt serve",
+    "server:dist": "grunt serve:dst",
     "test": "grunt test"
+  },
+  "readmeFilename": "Readme.md",
+  "homepage": "https://github.com/HanSeungHo/pinkpink",
+  "bugs": {
+    "url": "https://github.com/HanSeungHo/pinkpink/issues"
   }
 }

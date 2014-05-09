@@ -1,4 +1,3 @@
-// Generated on 2014-05-06 using generator-angular-fullstack 1.4.2
 'use strict';
 
 // # Globbing
@@ -23,7 +22,7 @@ module.exports = function (grunt) {
       // configurable paths
       dist: 'dist',
       core: 'core',
-      app: require('./bower.json').appPath || 'core/app'
+      client: require('./bower.json').appPath || 'core/client'
     },
     express: {
       options: {
@@ -49,7 +48,7 @@ module.exports = function (grunt) {
     },
     watch: {
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.client %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: true
@@ -64,7 +63,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.client %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
@@ -72,12 +71,11 @@ module.exports = function (grunt) {
       },
       livereload: {
         files: [
-          '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
-          '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
-          '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.client %>/views/{,*//*}*.{html,jade}',
+          '{.tmp,<%= yeoman.client %>}/styles/{,*//*}*.css',
+          '{.tmp,<%= yeoman.client %>}/scripts/{,*//*}*.js',
+          '<%= yeoman.client %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
-
         options: {
           livereload: true
         }
@@ -85,7 +83,8 @@ module.exports = function (grunt) {
       express: {
         files: [
           '<%= yeoman.core %>/server.js',
-          '<%= yeoman.core %>/lib/**/*.{js,json}'
+          '<%= yeoman.core %>/routes.js',
+          '<%= yeoman.core %>/core/**/*.{js,json}'
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
@@ -103,12 +102,12 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          jshintrc: '<%= yeoman.core %>/lib/.jshintrc'
+          jshintrc: '<%= yeoman.core %>/config/.jshintrc'
         },
         src: [ '<%= yeoman.core %>/lib/{,*/}*.js']
       },
       all: [
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.client %>/scripts/{,*/}*.js'
       ],
       test: {
         options: {
@@ -185,24 +184,24 @@ module.exports = function (grunt) {
     },
 
     // Automatically inject Bower components into the app
-//    'bower-install': {
-      //app: {
-//        html: '<%= yeoman.app %>/views/index.html',
-//        ignorePath: '<%= yeoman.app %>/',
-        //exclude: ['bootstrap-sass']
-      //}
-    //},
+   'bower-install': {
+      app: {
+       html: '<%= yeoman.client %>/views/index.html',
+        ignorePath: '<%= yeoman.client %>/',
+        exclude: ['bootstrap-sass']
+      }
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
-        sassDir: '<%= yeoman.app %>/styles',
+        sassDir: '<%= yeoman.client %>/styles',
         cssDir: '<%= yeoman.core %>/.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/bower_components',
+        imagesDir: '<%= yeoman.client %>/images',
+        javascriptsDir: '<%= yeoman.client %>/scripts',
+        fontsDir: '<%= yeoman.client %>/styles/fonts',
+        importPath: '<%= yeoman.client %>/bower_components',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',
@@ -240,8 +239,8 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: ['<%= yeoman.app %>/views/index.html',
-             '<%= yeoman.app %>/views/index.jade'],
+      html: ['<%= yeoman.client %>/views/index.html',
+             '<%= yeoman.client %>/views/index.jade'],
       options: {
         dest: '<%= yeoman.dist %>/public'
       }
@@ -265,7 +264,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= yeoman.client %>/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/public/images'
         }]
@@ -276,7 +275,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= yeoman.client %>/images',
           src: '{,*/}*.svg',
           dest: '<%= yeoman.dist %>/public/images'
         }]
@@ -293,8 +292,8 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/views',
-          src: ['*.html', 'partials/**/*.html'],
+          cwd: '<%= yeoman.client %>/views',
+          src: ['*.html', 'page/**/*.html'],
           dest: '<%= yeoman.dist %>/views'
         }]
       }
@@ -326,7 +325,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>',
+          cwd: '<%= yeoman.client %>',
           dest: '<%= yeoman.dist %>/public',
           src: [
             '*.{ico,png,txt}',
@@ -338,7 +337,7 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>/views',
+          cwd: '<%= yeoman.client %>/views',
           dest: '<%= yeoman.dist %>/views',
           src: '**/*.jade'
         }, {
@@ -352,7 +351,11 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'server.js',
-            'lib/**/*',
+            'routes.js',
+            'controllers/**/*',
+            'config/**/*',
+            'middleware/**/*',
+            'models/**/*',
             'upload/**/*',
             'db/**/*'
           ]
@@ -368,7 +371,7 @@ module.exports = function (grunt) {
       },
       styles: {
         expand: true,
-        cwd: '<%= yeoman.app %>/styles',
+        cwd: '<%= yeoman.client %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
@@ -398,32 +401,6 @@ module.exports = function (grunt) {
         'htmlmin'
       ]
     },
-
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css',
-    //         '<%= yeoman.app %>/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
 
     // Test settings
     karma: {
@@ -471,7 +448,7 @@ module.exports = function (grunt) {
     if (target === 'debug') {
       return grunt.task.run([
         'clean:server',
-        //'bower-install',
+        'bower-install',
         'concurrent:server',
         'autoprefixer',
         'concurrent:debug'
@@ -480,7 +457,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      //'bower-install',
+      'bower-install',
       'concurrent:server',
       'autoprefixer',
       'express:dev',
@@ -519,7 +496,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    //'bower-install',
+    'bower-install',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
