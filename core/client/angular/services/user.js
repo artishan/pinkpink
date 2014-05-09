@@ -2,7 +2,7 @@
 
 angular.module('pinkpinkApp')
   .factory('User', function ($resource) {
-    return $resource('/admin/users/:id', {
+    return $resource('/lib/users/:id', {
       id: '@id'
     }, { //parameters default
       update: {

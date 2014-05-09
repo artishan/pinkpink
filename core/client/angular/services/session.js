@@ -2,5 +2,5 @@
 
 angular.module('pinkpinkApp')
   .factory('Session', function ($resource) {
-    return $resource('/admin/session/');
+    return $resource('/lib/session/');
   });

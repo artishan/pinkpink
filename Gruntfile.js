@@ -48,7 +48,10 @@ module.exports = function (grunt) {
     },
     watch: {
       js: {
-        files: ['<%= yeoman.client %>/scripts/{,*/}*.js'],
+        files: [
+          '<%= yeoman.client %>/scripts/{,*/}*.js',
+          '<%= yeoman.client %>/angular/{,*/}*.js',
+        ],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: true
@@ -457,7 +460,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      // 'bower-install',
+      'bower-install',
       'concurrent:server',
       'autoprefixer',
       'express:dev',

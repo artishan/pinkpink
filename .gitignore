@@ -1,15 +1,9 @@
-.git
 .sass-cache
 .tmp
 node_modules
-core/.tmp
-
-# bower config
-core/client/bower_components
-
-# database, upload
 core/db
 core/upload/*
-
-# release file
+core/client/bower_components
+.git
 dist
+core/.tmp
