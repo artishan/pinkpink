@@ -5,7 +5,7 @@ node_modules
 core/.tmp
 
 # bower config
-core/app/bower_components
+core/client/bower_components
 
 # database, upload
 core/db
