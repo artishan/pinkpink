@@ -8,6 +8,9 @@ angular.module('pinkpinkApp', [
   'ui.bootstrap'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
+
+    $routeProvider.when("/vote/hi", {templateUrl: 'page/login', controller: 'LoginCtrl'});
+
     $routeProvider
       .when('/', {
         templateUrl: 'page/vote',
@@ -69,3 +72,8 @@ angular.module('pinkpinkApp', [
       }
     });
   });
+
+// angular.forEach(jsonRoutes, function(r) {
+//     $routeProvider.when(r.url, {template: r.template, controller: r.controller});
+// });
+
