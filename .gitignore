@@ -3,7 +3,9 @@
 node_modules
 core/db
 core/upload/*
-core/client/bower_components
+!**/.bower.json
+core/client/bower_components/*/*
+!core/client/bower_components/*/.bower.json
 .git
 dist
 core/.tmp
