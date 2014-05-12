@@ -5,7 +5,6 @@ core/db
 core/upload/*
 !**/.bower.json
 core/client/bower_components/*/*
-!core/client/bower_components/*/.bower.json
 .git
 dist
 core/.tmp

@@ -58,11 +58,16 @@ function routes(app) {
     .get(lib.view.error404);
   app.route('/styles/*')
     .get(lib.view.error404);
+  app.route('templates/*')
+    .get( lib.view.error404);
+  app.route('layouts/*')
+    .get( lib.view.error404);
+  app.route('layouts/*')
+    .get( lib.view.error404);
 
   // All other routes to use Angular routing in app/scripts/app.js
   app.route('/*')
-    .get( lib.view.error404);
-
+    .get( auth.setUserCookie, lib.view.index);
 };
 
 exports = module.exports = routes;

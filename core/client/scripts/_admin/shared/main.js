@@ -26,5 +26,3 @@
   ]).controller('DashboardCtrl', ['$scope', function($scope) {}]);
 
 }).call(this);
-
-//# sourceMappingURL=main.js.map

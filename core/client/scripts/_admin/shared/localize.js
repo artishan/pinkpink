@@ -25,7 +25,7 @@
             localize.language = ($window.navigator.userLanguage || $window.navigator.language).toLowerCase();
             localize.language = localize.language.split("-")[0];
           }
-          return 'i18n/resources-locale_' + localize.language + '.js';
+          return 'i18n/_admin/resources-locale_' + localize.language + '.js';
         },
         initLocalizedResources: function() {
           var url;
@@ -150,5 +150,3 @@
   ]);
 
 }).call(this);
-
-//# sourceMappingURL=localize.js.map
