@@ -13,31 +13,26 @@ angular.module('pinkpinkApp', [
 
     $routeProvider
       .when('/', {
-        templateUrl: 'page/vote',
-        controller: 'VoteCtrl'
+          redirectTo: '/vote'
       })
       // .when('/', {
       //   templateUrl: 'partials/main',
       //   controller: 'MainCtrl'
       // })
-      .when('/login', {
-        templateUrl: 'page/login',
-        controller: 'LoginCtrl'
-      })
       .when('/vote', {
-        templateUrl: 'page/vote',
+        templateUrl: 'templates/vote/index.html',
         controller: 'VoteCtrl'
       })
       .when('/vote/board', {
-        templateUrl: 'page/vote/board',
+        templateUrl: 'templates/vote/board.html',
         controller: 'VoteBoardCtrl'
       })
       .when('/signup', {
-        templateUrl: 'page/signup',
+        templateUrl: 'templates/page/signup.html',
         controller: 'SignupCtrl'
       })
       .when('/settings', {
-        templateUrl: 'page/settings',
+        templateUrl: 'templates/page/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
       })

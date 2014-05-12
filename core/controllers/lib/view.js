@@ -3,14 +3,46 @@
 var path = require('path');
 
 /**
- * Send partial, or 404 if it doesn't exist
+ * Send our single page app
  */
-exports.page = function(req, res) {
-  var stripped = req.url.split('.')[0];
-  var requestedView = path.join('./', stripped);
-  res.render(requestedView, function(err, html) {
+exports.index = function(req, res) {
+  res.sendfile(path.join(__rootDir + '/client/layouts/index.html'));
+};
+
+/**
+ * Send template url, or 404 if it doesn't exist
+ */
+// exports.template = function(req, res) {
+//   var stripped = req.url.split('.')[0];
+//   var requestedView = path.join('./', stripped);
+//   res.render(requestedView, function(err, html) {
+//     if(err) {
+//       console.log("Error rendering page '" + requestedView + "'\n", err);
+//       res.status(404);
+//       res.send(404);
+//     } else {
+//       res.send(html);
+//     }
+//   });
+// };
+
+/**
+ * Admin page
+ */
+exports.admin = function(req, res) {
+  res.sendfile(path.join(__rootDir + '/client/layouts/_admin/index.html'));
+};
+
+/**
+ * Layout page
+ */
+exports.layout = function(req, res) {
+  var stripped = req.url.split('.');
+  console.log(req.url);
+  var layoutView = path.join(__rootDir, '/client/layouts', stripped + '.html');
+  res.sendfile(layoutView, function(err, html) {
     if(err) {
-      console.log("Error rendering page '" + requestedView + "'\n", err);
+      console.log("Error rendering page '" + layoutView + "'\n", err);
       res.status(404);
       res.send(404);
     } else {
@@ -20,25 +52,13 @@ exports.page = function(req, res) {
 };
 
 /**
- * Send our single page app
- */
-exports.index = function(req, res) {
-  res.render('index');
-};
-
-/**
  * Error page
  */
-exports.error = function(req, res) {
-  res.render('404');
-};
-
 exports.error404 = function(req, res) {
   res.status(404);
-
   // respond with html page
   if (req.accepts('html')) {
-    res.render('404', { url: req.url });
+    res.sendfile(path.join(__rootDir + '/client/404.html'));
     return;
   }
 

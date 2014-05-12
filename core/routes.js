@@ -13,6 +13,14 @@ var lib = {
  */
 function routes(app) {
 
+  // Index Route
+  app.route('/')
+    .get( auth.setUserCookie, lib.view.index);
+
+  // layout Route
+  app.route('/admin')
+    .get(lib.view.admin);
+
   // API Routes
   app.route('/api/vote/:score')
     .post(vote.score);
@@ -23,7 +31,7 @@ function routes(app) {
   app.route('/api/*')
     .get(lib.view.error404);
 
-  // Admin Routes
+  // Default API Routes
   app.route('/lib/users')
     .post(lib.users.create)
     .put(lib.users.changePassword );
@@ -38,8 +46,8 @@ function routes(app) {
     .get(lib.view.error404);
 
   // Request angular view
-  app.route('/page/*')
-    .get( lib.view.page );
+  // app.route('/templates/*')
+  //   .get( lib.view.template );
 
   // Not Found action
   app.route('/images/*')
@@ -53,7 +61,7 @@ function routes(app) {
 
   // All other routes to use Angular routing in app/scripts/app.js
   app.route('/*')
-    .get( auth.setUserCookie, lib.view.index);
+    .get( lib.view.error404);
 
 };
 
