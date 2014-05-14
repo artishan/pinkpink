@@ -74,9 +74,10 @@ module.exports = function (grunt) {
       },
       livereload: {
         files: [
-          '<%= yeoman.client %>/views/{,*//*}*.{html,jade}',
+          '<%= yeoman.client %>/templates/{,*//*}*.{html,jade}',
           '{.tmp,<%= yeoman.client %>}/styles/{,*//*}*.css',
           '{.tmp,<%= yeoman.client %>}/scripts/{,*//*}*.js',
+          '{.tmp,<%= yeoman.client %>}/angular/{,*//*}*.js',
           '<%= yeoman.client %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {

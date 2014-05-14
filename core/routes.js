@@ -20,6 +20,8 @@ function routes(app) {
   // layout Route
   app.route('/admin')
     .get(lib.view.admin);
+  app.route('/admin/*')
+    .get(lib.view.admin);
 
   // API Routes
   app.route('/api/vote/:score')
@@ -50,6 +52,8 @@ function routes(app) {
   //   .get( lib.view.template );
 
   // Not Found action
+  app.route('/404')
+    .get(lib.view.error404);
   app.route('/images/*')
     .get(lib.view.error404);
   app.route('/bower_components/*')

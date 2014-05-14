@@ -13,7 +13,7 @@ angular.module('pinkpinkApp', [
 
     $routeProvider
       .when('/', {
-          redirectTo: '/vote'
+          redirectTo: 'vote'
       })
       // .when('/', {
       //   templateUrl: 'partials/main',
@@ -27,6 +27,10 @@ angular.module('pinkpinkApp', [
         templateUrl: 'templates/vote/board.html',
         controller: 'VoteBoardCtrl'
       })
+      .when('/login', {
+        templateUrl: 'templates/page/login.html',
+        controller: 'LoginCtrl'
+      })
       .when('/signup', {
         templateUrl: 'templates/page/signup.html',
         controller: 'SignupCtrl'
@@ -37,7 +41,7 @@ angular.module('pinkpinkApp', [
         authenticate: true
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404'
       });
 
     $locationProvider.html5Mode(true);
