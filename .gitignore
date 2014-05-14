@@ -3,7 +3,10 @@
 node_modules
 core/db
 core/upload/*
-core/client/bower_components/*
+!core/upload/images_vote
+core/upload/images_vote/*
+!core/upload/images_vote/test.png
+core/client/bower_components/
 .git
 dist
 core/.tmp
