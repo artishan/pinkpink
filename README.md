@@ -1,7 +1,7 @@
 pinkpink
 ========
 
-Picture service for node.js
+Web service for node.js
 
 
 ## Express
