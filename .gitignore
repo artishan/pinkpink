@@ -3,7 +3,7 @@
 node_modules
 core/db
 core/upload/*
-core/client/assert
+core/client/bower_components/*
 .git
 dist
 core/.tmp
