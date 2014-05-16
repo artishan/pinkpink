@@ -21,6 +21,7 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       dist: 'dist',
+      public: 'dist/public',
       core: 'core',
       client: require('./bower.json').appPath || 'core/client'
     },
@@ -81,6 +82,7 @@ module.exports = function (grunt) {
           '<%= yeoman.client %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
+          port: 35728,
           livereload: true
         }
       },
@@ -88,7 +90,7 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.core %>/server.js',
           '<%= yeoman.core %>/routes.js',
-          '<%= yeoman.core %>/core/**/*.{js,json}'
+          '<%= yeoman.core %>/**/*.{js,json}'
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
@@ -232,10 +234,10 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/public/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/public/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/public/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/public/styles/fonts/*'
+            '<%= yeoman.public %>/scripts/{,*/}*.js',
+            '<%= yeoman.public %>/styles/{,*/}*.css',
+            '<%= yeoman.public %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%= yeoman.public %>/styles/fonts/*'
           ]
         }
       }
@@ -245,8 +247,9 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: ['<%= yeoman.client %>/views/index.html',
-             '<%= yeoman.client %>/views/index.jade'],
+      html: [
+          '<%= yeoman.client %>/layouts/{,*/}*.html'
+      ],
       options: {
         dest: '<%= yeoman.dist %>/public'
       }
@@ -254,8 +257,10 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/views/{,*/}*.html',
-             '<%= yeoman.dist %>/views/{,*/}*.jade'],
+      html: [
+        '<%= yeoman.dist %>/public/layouts/{,*/}*.html',
+        '<%= yeoman.dist %>/public/layouts/{,*/}*.jade'
+      ],
       css: ['<%= yeoman.dist %>/public/styles/{,*/}*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>/public']
@@ -298,9 +303,9 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.client %>/views',
-          src: ['*.html', 'page/**/*.html'],
-          dest: '<%= yeoman.dist %>/views'
+          cwd: '<%= yeoman.client %>/templates',
+          src: ['*.html', '<%= yeoman.dist %>/**/*.html'],
+          dest: '<%= yeoman.dist %>/templates'
         }]
       }
     },
@@ -321,7 +326,7 @@ module.exports = function (grunt) {
     // Replace Google CDN references
     cdnify: {
       dist: {
-        html: ['<%= yeoman.dist %>/views/*.html']
+        html: ['<%= yeoman.dist %>/public/*.html']
       }
     },
 
@@ -334,18 +339,19 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.client %>',
           dest: '<%= yeoman.dist %>/public',
           src: [
-            '*.{ico,png,txt}',
+            '*.{ico,png,txt,html}',
             '.htaccess',
             'bower_components/**/*',
+            'i18n/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/**/*'
+            'layouts/**/*'
           ]
         }, {
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.client %>/views',
-          dest: '<%= yeoman.dist %>/views',
-          src: '**/*.jade'
+          cwd: '<%= yeoman.client %>/templates',
+          dest: '<%= yeoman.public %>/templates',
+          src: '**/*.html'
         }, {
           expand: true,
           cwd: '.tmp/images',
@@ -353,7 +359,7 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'core',
+          cwd: '<%= yeoman.core %>',
           dest: '<%= yeoman.dist %>',
           src: [
             'server.js',

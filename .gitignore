@@ -7,6 +7,7 @@ core/upload/*
 core/upload/images_vote/*
 !core/upload/images_vote/test.png
 core/client/bower_components/
+logs/*
 .git
 dist
 core/.tmp

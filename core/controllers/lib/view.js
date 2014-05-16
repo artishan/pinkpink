@@ -6,7 +6,7 @@ var path = require('path');
  * Send our single page app
  */
 exports.index = function(req, res) {
-  res.sendfile(path.join(__rootDir + '/client/layouts/index.html'));
+  res.sendfile(path.join(__layoutsDir + 'index.html'));
 };
 
 /**
@@ -30,7 +30,7 @@ exports.index = function(req, res) {
  * Admin page
  */
 exports.admin = function(req, res) {
-  res.sendfile(path.join(__rootDir + '/client/layouts/_admin/index.html'));
+    res.sendfile(path.join(__layoutsDir + '_admin/index.html'));
 };
 
 /**
@@ -39,7 +39,7 @@ exports.admin = function(req, res) {
 exports.layout = function(req, res) {
   var stripped = req.url.split('.');
   console.log(req.url);
-  var layoutView = path.join(__rootDir, '/client/layouts', stripped + '.html');
+  var layoutView = path.join(__layoutsDir, stripped + '.html');
   res.sendfile(layoutView, function(err, html) {
     if(err) {
       console.log("Error rendering page '" + layoutView + "'\n", err);
@@ -58,7 +58,7 @@ exports.error404 = function(req, res) {
   res.status(404);
   // respond with html page
   if (req.accepts('html')) {
-    res.sendfile(path.join(__rootDir + '/client/404.html'));
+    res.sendfile(path.join(__templatesDir + '404.html'));
     return;
   }
 
