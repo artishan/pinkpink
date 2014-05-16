@@ -1,6 +1,8 @@
 pinkpink
 ========
 [![Build Status](https://travis-ci.org/HanSeungHo/pinkpink.svg?branch=master)](https://travis-ci.org/HanSeungHo/pinkpink)
+[![Dependency Status](https://david-dm.org/HanSeungHo/pinkpink.svg?theme=shields.io)](https://david-dm.org/HanSeungHo/pinkpink)
+[![devDependency Status](https://david-dm.org/HanSeungHo/pinkpink/dev-status.svg?theme=shields.io)](https://david-dm.org/HanSeungHo/pinkpink#info=devDependencies)
 Web service for node.js
 
 
