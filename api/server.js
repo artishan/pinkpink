@@ -15,6 +15,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('./config/config');
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
+// Global Path
+GLOBAL.__rootDir = config.rootDir;
+GLOBAL.__layoutsDir = path.join(config.rootDir, config.layoutDir);
+GLOBAL.__templatesDir = path.join(config.rootDir, config.templateDir);
+
 // Bootstrap mongodb models
 var mongooseModelsPath = path.join(__dirname, './models/mongoose');
 fs.readdirSync(mongooseModelsPath).forEach(function (file) {

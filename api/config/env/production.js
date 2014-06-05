@@ -2,6 +2,8 @@
 
 module.exports = {
   env: 'production',
+  layoutDir: 'dist/layouts/',
+  templateDir: 'dist/templates/',
   ip:   process.env.OPENSHIFT_NODEJS_IP ||
         process.env.IP ||
         '0.0.0.0',

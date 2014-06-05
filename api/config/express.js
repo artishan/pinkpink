@@ -32,19 +32,16 @@ module.exports = function(app) {
       }
       next();
     });
-
-    app.use(express.static(path.join(config.root, '.tmp')));
-    app.use(express.static(path.join(config.root, 'client')));
-    app.use('/upload', express.static(path.join(config.root, 'upload')));
-    app.set('views', config.root + '/client/views');
+    app.use(express.static(path.join(config.rootDir, '/app/.tmp')));
+    app.use(express.static(path.join(config.rootDir, '/app')));
+    app.use('/upload', express.static(path.join(config.rootDir, '/api/upload')));
   }
 
   if ('production' === env) {
     app.use(compression());
-    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
-    app.use(express.static(path.join(config.root, 'public')));
-    app.use('/upload', express.static(path.join(config.root, 'upload')));
-    app.set('views', config.root + '/views');
+    app.use(favicon(path.join(config.rootDir, '/dist', 'favicon.ico')));
+    app.use(express.static(path.join(config.rootDir, '/dist')));
+    app.use('/upload', express.static(path.join(config.rootDir, '/api/upload')));
   }
 
   app.engine('html', require('ejs').renderFile);
