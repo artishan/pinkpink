@@ -9,14 +9,18 @@ angular.module('pinkpinkApp')
     // }
     , {
       'title': 'Photogenic',
-      'link': '/vote'
+      'link': '/#!/vote'
     }, {
       'title': 'Result',
-      'link': '/vote/board'
+      'link': '/#!/vote/board'
     }
     ,{
       'title': 'Settings',
-      'link': '/settings'
+      'link': '/#!/settings'
+    }
+    ,{
+      'title': 'Admin',
+      'link': '/admin'
     }
     ];
 
