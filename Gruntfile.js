@@ -59,11 +59,11 @@ module.exports = function (grunt) {
         }
       },
       mochaTest: {
-        files: ['<%= yeoman.api %>/test/server/{,*/}*.js'],
+        files: ['test/server/{,*/}*.js'],
         tasks: ['env:test', 'mochaTest']
       },
       jsTest: {
-        files: ['<%= yeoman.api %>/test/client/spec/{,*/}*.js'],
+        files: ['test/client/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
@@ -116,7 +116,7 @@ module.exports = function (grunt) {
       ],
       test: {
         options: {
-          jshintrc: '<%= yeoman.api %>/test/client/.jshintrc'
+          jshintrc: 'test/client/.jshintrc'
         },
         src: ['test/client/spec/{,*/}*.js']
       }
@@ -380,7 +380,7 @@ module.exports = function (grunt) {
     // Test settings
     karma: {
       unit: {
-        configFile: '<%= yeoman.api %>/test/karma.conf.js',
+        configFile: 'test/karma.conf.js',
         singleRun: true
       }
     },
@@ -389,7 +389,7 @@ module.exports = function (grunt) {
       options: {
         reporter: 'spec'
       },
-      src: ['<%= yeoman.api %>/test/server/**/*.js']
+      src: ['test/server/**/*.js']
     },
 
     env: {

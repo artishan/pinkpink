@@ -1,8 +1,11 @@
 'use strict';
+var path = require('path');
+
+console.log(path.normalize(__dirname + '/../../../' + 'api/server'));
 
 var should = require('should'),
-    app = require('../../../server'),
-    request = require('supertest');
+        app = require(path.normalize(__dirname + '/../../../' + 'api/server')),
+        request = require('supertest');
 
 describe('GET /api/vote/view', function() {
 

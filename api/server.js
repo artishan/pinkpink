@@ -1,9 +1,9 @@
 'use strict';
 
 var express = require('express'),
-      path = require('path'),
-      fs = require('fs'),
-      mongoose = require('mongoose');
+       path = require('path'),
+       fs = require('fs'),
+       mongoose = require('mongoose');
 
 /**
  * Main application file
