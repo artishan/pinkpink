@@ -87,9 +87,9 @@ module.exports = function (grunt) {
       },
       express: {
         files: [
-          '<%= yeoman.core %>/server.js',
-          '<%= yeoman.core %>/routes.js',
-          '<%= yeoman.core %>/**/*.{js,json}'
+          '<%= yeoman.api %>/server.js',
+          '<%= yeoman.api %>/routes.js',
+          '<%= yeoman.api %>/**/*.{js,json}'
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
