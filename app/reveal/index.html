@@ -1,0 +1,180 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<base href="/">
+<title>Reveal</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<!-- build:css({.tmp,app}) styles/main.css -->
+<link rel="stylesheet" href="/bower_components/components-revealjs/css/reveal.css">
+<!-- <link rel="stylesheet" href="/bower_components/components-revealjs/css/print/paper.css"> -->
+<!-- <link rel="stylesheet" href="/bower_components/components-revealjs/css/print/pdf.css"> -->
+<link rel="stylesheet" href="/bower_components/components-revealjs/css/theme/moon.css">
+<!-- <link rel="stylesheet" href="/styles/main.css"> -->
+<!-- <link rel="stylesheet" href="/styles/style.css"> -->
+<!-- endbuild -->
+
+<!-- Include the appropriate print stylesheet -->
+<script>
+  // var link = document.createElement( 'link' );
+  // link.rel = 'stylesheet';
+  // link.type = 'text/css';
+  // link.href = window.location.search.match( /print-pdf/gi ) ? '/bower_components/components-revealjs/css/print/pdf.css' : '/bower_components/components-revealjs/css/print/paper.css';
+  // document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+</head>
+<body ng-app="pinkpinkApp">
+<!--[if lt IE 7]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Add your site or application content here -->
+
+<div class="reveal">
+
+  <div class="slides">
+
+   <section>
+          <section>
+            <h2>Vertical Slides</h2>
+            <p>
+              Slides can be nested inside of other slides,
+              try pressing <a href="#" class="navigate-down">down</a>.
+            </p>
+            <a href="#" class="image navigate-down">
+              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+            </a>
+          </section>
+          <section>
+            <h2>Basement Level 1</h2>
+            <p>Press down or up to navigate.</p>
+          </section>
+          <section>
+            <h2>Basement Level 2</h2>
+            <p>Cornify</p>
+            <a class="test" href="http://cornify.com">
+              <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
+            </a>
+          </section>
+          <section>
+            <h2>Basement Level 3</h2>
+            <p>That's it, time to go back up.</p>
+            <a href="#/2" class="image">
+              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+            </a>
+          </section>
+        </section>
+
+        <section>
+          <h2>Slides</h2>
+          <p>
+            Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
+          </p>
+        </section>
+
+  </div>
+
+  <!-- The navigational controls UI -->
+  <aside class="controls">
+    <a class="left" href="#">&#x25C4;</a>
+    <a class="right" href="#">&#x25BA;</a>
+    <a class="up" href="#">&#x25B2;</a>
+    <a class="down" href="#">&#x25BC;</a>
+  </aside>
+
+  <!-- Presentation progress bar -->
+  <div class="progress"><span></span></div>
+
+</div>
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js({.tmp,app}) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- <script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/es5-shim/es5-shim.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/json3/lib/json3.min.js"></script>
+<script src="/bower_components/angular-resource/angular-resource.js"></script>
+<script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script> -->
+<script src="/bower_components/components-revealjs/js/reveal.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+<script type="text/javascript">
+
+Reveal.initialize({
+
+    // // Display controls in the bottom right corner
+    // controls: true,
+
+    // // Display a presentation progress bar
+    // progress: true,
+
+    // // Push each slide change to the browser history
+    // history: false,
+
+    // // Enable keyboard shortcuts for navigation
+    // keyboard: true,
+
+    // // Enable touch events for navigation
+    // touch: true,
+
+    // // Enable the slide overview mode
+    // overview: true,
+
+    // // Vertical centering of slides
+    // center: true,
+
+    // // Loop the presentation
+    // loop: false,
+
+    // // Change the presentation direction to be RTL
+    // rtl: false,
+
+    // // Number of milliseconds between automatically proceeding to the
+    // // next slide, disabled when set to 0, this value can be overwritten
+    // // by using a data-autoslide attribute on your slides
+    // autoSlide: 0,
+
+    // // Enable slide navigation via mouse wheel
+    // mouseWheel: false,
+
+    // Transition style
+    transition: 'cube', // default/cube/page/concave/zoom/linear/fade/none
+
+    // // Transition speed
+    // transitionSpeed: 'default', // default/fast/slow
+
+    // // Transition style for full page backgrounds
+    // backgroundTransition: 'default' // default/linear/none
+
+});
+
+</script>
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!-- <script src="/scripts/app.js"></script>
+<script src="/scripts/controllers/main.js"></script>
+<script src="/scripts/controllers/navbar.js"></script>
+<script src="/scripts/controllers/login.js"></script>
+<script src="/scripts/controllers/signup.js"></script>
+<script src="/scripts/controllers/settings.js"></script>
+<script src="/scripts/controllers/vote.js"></script>
+<script src="/scripts/services/auth.js"></script>
+<script src="/scripts/services/session.js"></script>
+<script src="/scripts/services/user.js"></script>
+<script src="/scripts/directives/mongooseError.js"></script> -->
+<!-- endbuild -->
+
+</body>
+</html>

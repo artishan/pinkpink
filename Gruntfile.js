@@ -22,7 +22,8 @@ module.exports = function (grunt) {
       // configurable paths
       dist: 'dist',
       api: 'api',
-      app: require('./bower.json').appPath || 'app'
+      // app: require('./bower.json').appPath || 'app'
+      app: 'app'
     },
     express: {
       options: {
@@ -49,8 +50,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: [
-          '<%= yeoman.app %>/scripts/{,*/}*.js',
-          '<%= yeoman.app %>/angular/{,*/}*.js',
+          '<%= yeoman.app %>/scripts/{,*/}*.js'
         ],
         tasks: ['newer:jshint:all'],
         options: {
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         files: [
-          '<%= yeoman.app %>/templates/{,*//*}*.{html,jade}',
+          '<%= yeoman.app %>/{,*//*}*.{html,jade}',
           '.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
           '.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
           '.tmp,<%= yeoman.app %>}/angular/{,*//*}*.js',
@@ -332,7 +332,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'robots.txt',
             'templates/**/*',
-            'layouts/**/*',
+            'components/**/*',
+            'admin/**/*',
             'bower_components/**/*',
             'i18n/**/*',
             'images/{,*/}*.{webp}',
@@ -340,7 +341,6 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
-
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
