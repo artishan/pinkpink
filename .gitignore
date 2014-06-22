@@ -1,12 +1,13 @@
+.git
+node_modules
 .sass-cache
 .tmp
-node_modules
+logs/*
+api/.tmp
 api/db
 api/upload/*
 !api/upload/images_vote
 api/upload/images_vote/*
 !api/upload/images_vote/test.png
 app/bower_components/
-.git
 dist
-api/.tmp
