@@ -5,6 +5,8 @@ pinkpink
 [![devDependency Status](https://david-dm.org/HanSeungHo/pinkpink/dev-status.svg?theme=shields.io)](https://david-dm.org/HanSeungHo/pinkpink#info=devDependencies)
 Web service for node.js
 
+[Pfficial website](http://hanseungho.github.io/pinkpink/)
+[Official trello](https://trello.com/b/iutnsyl9/pinkpink)
 
 ## Express
 
