@@ -22,8 +22,7 @@ module.exports = function (grunt) {
       // configurable paths
       dist: 'dist',
       api: 'api',
-      // app: require('./bower.json').appPath || 'app'
-      app: 'app'
+      app: require('./bower.json').appPath || 'app'
     },
     express: {
       options: {
@@ -77,7 +76,6 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/{,*//*}*.{html,jade}',
           '.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
           '.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
-          '.tmp,<%= yeoman.app %>}/angular/{,*//*}*.js',
           '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
@@ -160,7 +158,8 @@ module.exports = function (grunt) {
     'node-inspector': {
       custom: {
         options: {
-          'web-host': 'localhost'
+          'web-host': 'localhost',
+          'web-port': '1337'
         }
       }
     },
@@ -168,7 +167,7 @@ module.exports = function (grunt) {
     // Use nodemon to run server in debug mode with an initial breakpoint
     nodemon: {
       debug: {
-        script: 'server.js',
+        script: 'api/server.js',
         options: {
           nodeArgs: ['--debug-brk'],
           env: {
@@ -182,7 +181,7 @@ module.exports = function (grunt) {
             // opens browser on initial server start
             nodemon.on('config:update', function () {
               setTimeout(function () {
-                require('open')('http://localhost:8080/debug?port=5858');
+                require('open')('http://localhost:1337/debug?port=5858');
               }, 500);
             });
           }

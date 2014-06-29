@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-  layoutDir: 'app/layouts/',
+  layoutDir: 'app/',
   templateDir: 'app/templates/',
   mongo: {
-    uri: 'mongodb://localhost/fullstack-dev'
+    uri: 'mongodb://localhost/pinkpink-dev'
   }
 };

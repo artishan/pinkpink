@@ -44,16 +44,23 @@ module.exports = function(app) {
     app.use('/upload', express.static(path.join(config.rootDir, '/api/upload')));
   }
 
+  if ('release' === env) {
+    app.use(compression());
+    app.use('/upload', express.static(path.join(config.rootDir, '/api/upload')));
+  }
+
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
   app.use(morgan('dev'));
-  app.use(bodyParser());
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
   app.use(methodOverride());
   app.use(cookieParser());
 
   // Persist sessions with mongoStore
   app.use(session({
-    secret: 'angular-fullstack secret',
+    secret: 'angular-pinkpink secret',
     store: new mongoStore({
       url: config.mongo.uri,
       collection: 'sessions'

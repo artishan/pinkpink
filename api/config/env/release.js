@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  env: 'production',
+  env: 'release',
   layoutDir: 'dist/',
   templateDir: 'dist/templates/',
   ip:   process.env.OPENSHIFT_NODEJS_IP ||

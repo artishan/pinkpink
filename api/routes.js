@@ -71,7 +71,15 @@ function routes(app) {
 
   // All other routes to use Angular routing in app/scripts/app.js
   app.route('/*')
-    .get( auth.setUserCookie, lib.view.index);
+    .get( auth.setUserCookie, function(req, res) {
+      var is_ajax_request = req.xhr;
+      console.log(req.xhr);
+      if(is_ajax_request){
+        lib.view.index
+      }else{
+        lib.view.error404
+      }
+    })
 };
 
 exports = module.exports = routes;

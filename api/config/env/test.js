@@ -2,9 +2,9 @@
 
 module.exports = {
   env: 'test',
-  layoutDir: 'app/layouts/',
+  layoutDir: 'app/',
   templateDir: 'app/templates/',
   mongo: {
-    uri: 'mongodb://localhost/fullstack-test'
+    uri: 'mongodb://localhost/pinkpink-test'
   }
 };
