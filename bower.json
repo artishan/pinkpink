@@ -46,5 +46,8 @@
     "angular-scenario": ">=1.2.*"
   },
   "testPath": "test/client/spec",
-  "private": true
+  "private": true,
+  "resolutions": {
+    "jquery": "2.1.1"
+  }
 }

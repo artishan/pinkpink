@@ -6,4 +6,4 @@ services:
 before_script:
   - 'gem install compass'
   - 'npm install -g bower grunt-cli'
-  - 'bower install'
+  - 'bower install -f'
