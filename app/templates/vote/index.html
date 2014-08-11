@@ -26,17 +26,18 @@
       </div>
   </div>
     <div class="button-holder" ng-show="photo.name">
-        <form action="api/vote/cute" method="post">
-            <input type="hidden" name="photo" value="{{photo.name}}" />
+        <form action="http://api.pinkpink.hansh.kr/photo/vote/cute" method="post">
+            <input type="hidden" name="name" value="{{photo.name}}" />
             <input type="submit" value="Cute!" />
         </form>
-        <form action="api/vote/notcute" method="post">
-            <input type="hidden" name="photo" value="{{photo.name}}" />
+        <form action="http://api.pinkpink.hansh.kr/photo/vote/notcute" method="post">
+            <input type="hidden" name="name" value="{{photo.name}}" />
             <input type="submit" value="Not Cute!" />
         </form>
     </div>
-
-    <img ng-show="photo.name" ng-src="upload/images_vote/{{photo.name}}" alt="Picture" />
+    <div ng-if="photo.name">
+      <img ng-src="content/photo/images/{{photo.name}}" alt="Picture" />
+    </div>
 
     <h3 ng-hide="photo.name">No more photos to vote on! Check out the <a href="./vote/board">Result</a>.</h3>
 </div>

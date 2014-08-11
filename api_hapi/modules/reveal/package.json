@@ -1,0 +1,33 @@
+{
+  "name": "pink-reveal",
+  "version": "0.0.1",
+  "private": true,
+  "import": "lodash",
+  "author": {
+    "name": "HanSeungHo",
+    "email": "han@hansh.kr"
+  },
+  "route":[
+    {
+      "path" : "/reveal/:id",
+      "method" : "GET"
+    },
+    {
+      "path" : "/reveal/:get",
+      "method" : "CREATE"
+    }
+  ],
+  "engines": {
+      "node": ">=0.10.5"
+  },
+  "dependencies": {
+    "pink-common" : "^0.4"
+  },
+  "devDependencies": {
+    "pink-swagger": "^0.4"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "pink-manager",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "HanSeungHo",
+    "email": "han@hansh.kr"
+  },
+  "engines": {
+      "node": ">=0.10.5"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

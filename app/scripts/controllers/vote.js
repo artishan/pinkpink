@@ -1,20 +1,21 @@
 'use strict';
 
+var apiUrl = "http://api.pinkpink.hansh.kr";
+
 angular.module('pinkpinkApp')
-  .controller('VoteCtrl', function ($http, $scope, $location) {
+  .controller('VoteCtrl', function($http, $scope, $location) {
 
-  $scope.singleModel = 1;
+    $scope.singleModel = 1;
 
-  $scope.radioModel = 'Middle';
+    $scope.radioModel = 'Middle';
 
-  $scope.checkModel = {
-    left: false,
-    middle: true,
-    right: false
-  };
+    $scope.checkModel = {
+      left: false,
+      middle: true,
+      right: false
+    };
 
-    $http.get('/api/vote/view').success(function(photo) {
-      console.log(photo);
+    $http.get(apiUrl + '/photo/vote').success(function(photo) {
       $scope.photo = photo;
     });
 
@@ -26,9 +27,9 @@ angular.module('pinkpinkApp')
     };
 
   })
-.controller('VoteBoardCtrl', function ($http, $scope, $location) {
+  .controller('VoteBoardCtrl', function($http, $scope, $location) {
 
-    $http.get('/api/vote/board').success(function(photos) {
+    $http.get(apiUrl + '/photo/votes').success(function(photos) {
       console.log(photos);
       $scope.photos = photos;
     });
