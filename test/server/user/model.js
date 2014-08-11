@@ -4,7 +4,7 @@
 //     mongoose = require('mongoose'),
 //     User = mongoose.model('User');
 
-// var user;
+// // var user;
 
 // describe('User Model', function() {
 //   before(function(done) {

@@ -1,48 +1,26 @@
-'use strict';
+module.name = "pinkpink";
 
-var express = require('express'),
-       path = require('path'),
-       fs = require('fs'),
-       mongoose = require('mongoose');
+var _ = require('lodash');
+var Hapi = require('hapi');
+var requireDirectory = require('require-directory');
+var config = requireDirectory(module, './config');
+var server = Hapi.createServer(config.api.host, config.api.port, config.hapi.options);
+exports = module.exports = server;
 
-/**
- * Main application file
- */
+// Bootstrap Hapi Server Plugins, passes the server object to the plugins
+config.hapi.plugin(server);
 
-// Set default node environment to development
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var libs = requireDirectory(module, __dirname + "/lib", "/index.js$/");
+var modules = requireDirectory(module, __dirname + "/modules", "/index.js$/");
 
-var config = require('./config/config');
-var db = mongoose.connect(config.mongo.uri, config.mongo.options);
-
-// Global Path
-GLOBAL.__rootDir = config.rootDir;
-GLOBAL.__layoutsDir = path.join(config.rootDir, config.layoutDir);
-GLOBAL.__templatesDir = path.join(config.rootDir, config.templateDir);
-
-// Bootstrap mongodb models
-var mongooseModelsPath = path.join(__dirname, './models/mongoose');
-fs.readdirSync(mongooseModelsPath).forEach(function (file) {
-  if (/(.*)\.(js$|coffee$)/.test(file)) {
-    require(mongooseModelsPath + '/' + file);
-  }
+// Require the routes and pass the server object.
+// Add the server routes
+_(modules).forEach(function(module) {
+  _.isArray(module.route) ? server.route(module.route) : undefined;
 });
 
-// Populate empty DB with sample data
-require('./config/dummydata');
-
-// Passport Configuration
-var passport = require('./config/passport');
-
-// Setup Express
-var app = express();
-require('./config/express')(app);
-require('./routes')(app);
-
-// Start server
-app.listen(config.port, config.ip, function () {
-  console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
+//Start the server
+server.start(function() {
+  //Log to the console the host and port info
+  console.log('Server started at: ' + server.info.uri);
 });
-
-// Expose app
-exports = module.exports = app;
