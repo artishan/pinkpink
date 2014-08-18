@@ -3,6 +3,7 @@
   angular.module('admin', [
     'ngRoute',
     'ngAnimate',
+    'ui.ace',
     'ui.bootstrap',
     'easypiechart',
     'mgo-angular-wizard',
@@ -10,10 +11,12 @@
     'ui.tree',
     'ngMap',
     'ngTagsInput',
+    'hc.marked',
     'app.ui.ctrls',
     'app.ui.directives',
     'app.ui.services',
     'app.controllers',
+    'admin.ui.reveal.ctrls',
     'app.directives',
     'app.form.validation',
     'app.ui.form.ctrls',
@@ -33,6 +36,18 @@
         authenticate: true
       }).when('/dashboard', {
         templateUrl: '/templates/admin/dashboard.html'
+      }).when('/reveal/dashboard', {
+        templateUrl: '/templates/admin/reveal/dashboard.html'
+      }).when('/reveal/slide/:slideId', {
+        templateUrl: '/templates/admin/reveal/slide.html'
+      }).when('/reveal/slides/:deckId', {
+        templateUrl: '/templates/admin/reveal/deck_editor.html'
+      }).when('/reveal/decks', {
+        templateUrl: '/templates/admin/reveal/decks.html'
+      }).when('/reveal/deck', {
+        templateUrl: '/templates/admin/reveal/deck.html'
+      }).when('/reveal/deck/:deckId', {
+        templateUrl: '/templates/admin/reveal/deck.html'
       }).when('/ui/typography', {
         templateUrl: '/templates/admin/ui/typography.html'
       }).when('/ui/buttons', {
