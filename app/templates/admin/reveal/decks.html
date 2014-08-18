@@ -73,20 +73,12 @@
                                 data-ng-change="onNumPerPageChange()">
                         </select>
                         entries per page
+                        {{numPerPage}}
                     </span>
-                </div>
-                <div class="col-md-6 text-right pagination-container">
-                    <pagination class="pagination-sm"
-                                page="currentPage"
-                                total-items="filteredStores.length"
-                                max-size="4"
-                                on-select-page="select(page)"
-                                items-per-page="numPerPage"
-                                rotate="false"
-                                boundary-links="true"></pagination>
                 </div>
             </div>
         </footer>
+
     </section>
 
 </div>
