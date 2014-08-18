@@ -1,6 +1,7 @@
 module.name = "pinkpink";
 
 var _ = require('lodash');
+var path = require('path');
 var Hapi = require('hapi');
 var requireDirectory = require('require-directory');
 var config = requireDirectory(module, './config');
@@ -9,9 +10,9 @@ exports = module.exports = server;
 
 // Bootstrap Hapi Server Plugins, passes the server object to the plugins
 config.hapi.plugin(server);
-
-var libs = requireDirectory(module, __dirname + "/lib", "/index.js$/");
-var modules = requireDirectory(module, __dirname + "/modules", "/index.js$/");
+var whitelist = {include: "/index.js$/" };
+var libs = requireDirectory(module, __dirname + "/lib", whitelist);
+var modules = requireDirectory(module, __dirname + "/modules", whitelist);
 
 // Require the routes and pass the server object.
 // Add the server routes

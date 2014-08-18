@@ -7,12 +7,15 @@
     "email": "han@hansh.kr"
   },
   "dependencies": {
+    "good": "^2.2.1",
     "hapi": "^6",
+    "hapi-cache-buster": "^0.2.0",
     "hapi-swagger": "https://api.github.com/repos/glennjones/hapi-swagger/tarball/",
     "joi": "^4.6",
     "lodash": "^2.4",
     "mongoose": "3.8.12",
-    "nedb": "^0.10"
+    "nedb": "^0.10",
+    "require-directory": "^2.0.0"
   },
   "devDependencies": {
     "connect-livereload": "^0.4",

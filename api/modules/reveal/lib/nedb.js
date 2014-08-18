@@ -8,7 +8,7 @@ var Datastore = require('nedb'),
 var rootPath = path.normalize(__dirname + '/../../../..');
 
 // Initialize two nedb databases. Notice the autoload parameter.
-var deck = new Datastore({ filename: rootPath + '/data/reveal/slide', autoload: true });
+var deck = new Datastore({ filename: rootPath + '/data/reveal/deck', autoload: true });
 var slide = new Datastore({ filename: rootPath + '/data/reveal/slide', autoload: true });
 var slideTag = new Datastore({ filename: rootPath + '/data/reveal/slide_tag', autoload: true });
 var slidePage = new Datastore({ filename: rootPath + '/data/reveal/slide_page', autoload: true });
