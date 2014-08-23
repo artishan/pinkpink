@@ -1,6 +1,7 @@
 (function() {
   'use strict';
-  angular.module('admin.ui.reveal.ctrls', []).controller('revealCtrl', [
+  angular.module('admin.ui.reveal.ctrls', [])
+  .controller('revealCtrl', [
     '$scope', function($scope) {
       console.log("revealCtrl");
       return $scope.tags = ['foo', 'bar'];
@@ -65,7 +66,6 @@
   ]).controller('revealSlideCtrl', [
     '$scope', function($scope) {
       console.log('loadede');
-      $scope.api = "http://api.pinkpink.hanshr.kr";
       $scope.putSlide = function(data){
         console.log(data);
       }
@@ -85,30 +85,17 @@
       };
     }
   ]).controller('revealDecksCtrl', [
-    '$scope', '$filter', function($scope, $filter) {
-      console.log('loadded');
+    '$scope', '$filter', 'Restangular', function($scope, $filter, Restangular) {
       var init;
-      $scope.stores = [
-        {
-          name: '안녕 고구마 ',
-          price: '$$',
-          sales: 292,
-          rating: 4.0
-        }, {
-          name: 'Eat On Monday Truck',
-          price: '$',
-          sales: 119,
-          rating: 4.3
-        }
-      ];
+      // $scope.decks = Restangular.all("reveal/decks").getList().$object;
       $scope.searchKeywords = '';
-      $scope.filteredStores = [];
+      $scope.filteredDecks = [];
       $scope.row = '';
       $scope.select = function(page) {
         var end, start;
         start = (page - 1) * $scope.numPerPage;
         end = start + $scope.numPerPage;
-        return $scope.currentPageStores = $scope.filteredStores.slice(start, end);
+        return $scope.currentPageDecks = $scope.filteredDecks.slice(start, end);
       };
       $scope.onFilterChange = function() {
         $scope.select(1);
@@ -124,7 +111,7 @@
         return $scope.currentPage = 1;
       };
       $scope.search = function() {
-        $scope.filteredStores = $filter('filter')($scope.stores, $scope.searchKeywords);
+        $scope.filteredDecks = $filter('filter')($scope.decks, $scope.searchKeywords);
         return $scope.onFilterChange();
       };
       $scope.order = function(rowName) {
@@ -132,7 +119,7 @@
           return;
         }
         $scope.row = rowName;
-        $scope.filteredStores = $filter('orderBy')($scope.stores, rowName);
+        $scope.filteredDecks = $filter('orderBy')($scope.decks, rowName);
         return $scope.onOrderChange();
       };
       $scope.numPerPageOpt = [3, 5, 10, 20];
@@ -140,8 +127,12 @@
       $scope.currentPage = 1;
       $scope.currentPageStores = [];
       init = function() {
-        $scope.search();
-        return $scope.select($scope.currentPage);
+        Restangular.all("reveal/decks").getList().then(function(decks) {
+          $scope.decks = decks;
+          $scope.search();
+          return $scope.select($scope.currentPage);
+
+        })
       };
       return init();
     }

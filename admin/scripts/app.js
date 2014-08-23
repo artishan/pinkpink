@@ -1,34 +1,35 @@
 (function() {
   'use strict';
   angular.module('admin', [
-    'ngRoute',
-    'ngAnimate',
-    'ui.ace',
-    'ui.bootstrap',
-    'easypiechart',
-    'mgo-angular-wizard',
-    'textAngular',
-    'ui.tree',
-    'ngMap',
-    'ngTagsInput',
-    'hc.marked',
-    'app.ui.ctrls',
-    'app.ui.directives',
-    'app.ui.services',
-    'app.controllers',
-    'admin.ui.reveal.ctrls',
-    'app.directives',
-    'app.form.validation',
-    'app.ui.form.ctrls',
-    'app.ui.form.directives',
-    'app.tables',
-    'app.map',
-    'app.task',
-    'app.localization',
     'app.chart.ctrls',
     'app.chart.directives',
-    'app.page.ctrls'
-]).config(function($routeProvider, $locationProvider) {
+    'app.controllers',
+    'app.directives',
+    'app.form.validation',
+    'app.localization',
+    'app.map',
+    'app.page.ctrls',
+    'app.tables',
+    'app.task',
+    'app.ui.ctrls',
+    'app.ui.directives',
+    'app.ui.form.ctrls',
+    'app.ui.form.directives',
+    'app.ui.services',
+    'easypiechart',
+    'hc.marked',
+    'mgo-angular-wizard',
+    'ngAnimate',
+    'ngMap',
+    'ngRoute',
+    'ngTagsInput',
+    'restangular',
+    'textAngular',
+    'ui.ace',
+    'ui.bootstrap',
+    'ui.tree',
+    'admin.ui.reveal.ctrls'
+]).config(function($routeProvider, $locationProvider, RestangularProvider) {
       $locationProvider.hashPrefix('!');
       $routeProvider
       .when('/', {
@@ -36,6 +37,8 @@
         authenticate: true
       }).when('/dashboard', {
         templateUrl: '/templates/dashboard.html'
+      }).when('/swagger', {
+        templateUrl: '/templates/swagger/list.html'
       }).when('/reveal/dashboard', {
         templateUrl: '/templates/reveal/dashboard.html'
       }).when('/reveal/slide/:slideId', {
@@ -128,6 +131,18 @@
         redirectTo: '/404'
       });
 
+      RestangularProvider.setBaseUrl('http://api.pinkpink.hansh.kr');
+      // RestangularProvider.setDefaultRequestParams({ apiKey: 'qweqweqweqwe' })
+      // RestangularProvider.setRestangularFields({
+      //   id: '_id.$oid'
+      // });
+      // RestangularProvider.setRequestInterceptor(function(elem, operation, what) {
+      //   if (operation === 'put') {
+      //     elem._id = undefined;
+      //     return elem;
+      //   }
+      //   return elem;
+      // })
   });
 
 }).call(this);

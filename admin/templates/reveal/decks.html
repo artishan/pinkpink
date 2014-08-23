@@ -2,7 +2,7 @@
 
     <section class="panel panel-default table-dynamic">
         <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Reveal slides</strong></div>
-
+        <!-- <pre>decks = {{decks | json}}</pre> -->
         <div class="table-filters">
             <div class="row">
                 <div class="col-sm-4 col-xs-6">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-sm-3 col-xs-6 filter-result-info">
                     <span>
-                        Showing {{filteredStores.length}}/{{stores.length}} entries
+                        Showing {{filteredDecks.length}}/{{decks.length}} entries
                     </span>
                 </div>
             </div>
@@ -35,30 +35,20 @@
                               data-ng-class="{active: row == '-name'}"></span>
                     </div></th>
                     <th><div class="th">
-                        Price
+                        Content
                         <span class="glyphicon glyphicon-chevron-up"
-                              data-ng-click=" order('price') "
-                              data-ng-class="{active: row == 'price'}"></span>
+                              data-ng-click=" order('content') "
+                              data-ng-class="{active: row == 'content'}"></span>
                         <span class="glyphicon glyphicon-chevron-down"
-                              data-ng-click=" order('-price') "
-                              data-ng-class="{active: row == '-price'}"></span>
-                    </div></th>
-                    <th><div class="th">
-                        Rating
-                        <span class="glyphicon glyphicon-chevron-up"
-                              data-ng-click=" order('rating') "
-                              data-ng-class="{active: row == 'rating'}"></span>
-                        <span class="glyphicon glyphicon-chevron-down"
-                              data-ng-click=" order('-rating') "
-                              data-ng-class="{active: row == '-rating'}"></span>
+                              data-ng-click=" order('-content') "
+                              data-ng-class="{active: row == '-content'}"></span>
                     </div></th>
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="store in currentPageStores">
-                    <td><a href="#!/reveal/slide/editor/{{store.id}}">{{store.name}}</a></td>
-                    <td>{{store.price}}</td>
-                    <td>{{store.sales}}</td>
+                <tr data-ng-repeat="deck in currentPageDecks">
+                    <td><a href="#!/reveal/deck/{{deck._id}}">{{deck.name}}</a></td>
+                    <td>{{deck.content}}</td>
                 </tr>
             </tbody>
         </table>

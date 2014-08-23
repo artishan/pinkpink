@@ -1,8 +1,8 @@
 var db = require("./lib/nedb");
 
 exports.getDecks = function(request, reply) {
-  db.deck.find({}, function(err, slides){
-    return reply(slides);
+  db.deck.find({}, function(err, decks){
+    return reply(decks);
   });
 };
 
@@ -14,25 +14,21 @@ exports.getDeck = function(request, reply) {
   });
 }
 
+exports.putDeck = function(request, reply) {
+  var data = request.payload;
+  db.deck.insert(data, function(err, data){
+    if(err){
+      reply(err);
+    }
+    reply(data);
+  });
+}
+
 exports.getSlides = function(request, reply) {
   db.slide.find({}, function(err, slides){
     return reply(slides);
   });
 };
-
-exports.putDeck = function(request, reply) {
-  var data = {
-    name: request.payload.name,
-    content: request.payload.content
-  }
-  db.slide.insert(data, function(err, data){
-    if(err){
-      console.log(err);
-      reply(data);
-    }
-    reply(data);
-  });
-}
 
 exports.getSlide = function(request, reply) {
   console.log(request.params);
@@ -43,14 +39,14 @@ exports.getSlide = function(request, reply) {
 }
 
 exports.putSlide = function(request, reply) {
-  var data = {
-    name: request.payload.name,
-    content: request.payload.content
-  }
+  // var data = {
+  //   name: request.payload.name,
+  //   content: request.payload.content
+  // }
+  var data = request.payload;
   db.slide.insert(data, function(err, data){
     if(err){
-      console.log(err);
-      reply(data);
+      reply(err);
     }
     reply(data);
   });

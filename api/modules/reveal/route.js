@@ -15,6 +15,12 @@ module.exports = [
     }
   },
   { method: 'PUT',
+    path: '/reveal/deck',
+    config: {
+      handler: reveal.putDeck
+    }
+  },
+  { method: 'PUT',
     path: '/reveal/deck/{id}',
     config: {
       handler: reveal.putDeck
