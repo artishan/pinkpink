@@ -27,7 +27,7 @@ module.exports = [
     }
   },
   { method: 'GET',
-    path: '/reveal/slides',
+    path: '/reveal/slides/{deckId}',
     config: {
       handler: reveal.getSlides
     }

@@ -1,8 +1,8 @@
-<div class="page page-table" data-ng-controller="revealDecksCtrl">
+<div class="page page-table" data-ng-controller="revealSlidesCtrl">
 
     <section class="panel panel-default table-dynamic">
         <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Reveal slides</strong></div>
-        <!-- <pre>decks = {{decks | json}}</pre> -->
+
         <div class="table-filters">
             <div class="row">
                 <div class="col-sm-4 col-xs-6">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-sm-3 col-xs-6 filter-result-info">
                     <span>
-                        Showing {{filteredDecks.length}}/{{decks.length}} entries
+                        Showing {{filteredStores.length}}/{{stores.length}} entries
                     </span>
                 </div>
             </div>
@@ -35,20 +35,20 @@
                               data-ng-class="{active: row == '-name'}"></span>
                     </div></th>
                     <th><div class="th">
-                        Content
+                        Price
                         <span class="glyphicon glyphicon-chevron-up"
                               data-ng-click=" order('content') "
-                              data-ng-class="{active: row == 'content'}"></span>
+                              data-ng-class="{active: row == 'price'}"></span>
                         <span class="glyphicon glyphicon-chevron-down"
                               data-ng-click=" order('-content') "
-                              data-ng-class="{active: row == '-content'}"></span>
+                              data-ng-class="{active: row == '-price'}"></span>
                     </div></th>
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="deck in currentPageDecks">
-                    <td><a href="#!/reveal/deck/{{deck._id}}">{{deck.name}}</a></td>
-                    <td>{{deck.content}}</td>
+                <tr data-ng-repeat="slide in currentPage">
+                    <td><a href="#!/reveal/slide/edit/{{slide._id}}">{{slide.name}}</a></td>
+                    <td>{{slide.content}}</td>
                 </tr>
             </tbody>
         </table>
@@ -63,12 +63,20 @@
                                 data-ng-change="onNumPerPageChange()">
                         </select>
                         entries per page
-                        {{numPerPage}}
                     </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                page="currentPage"
+                                total-items="filteredStores.length"
+                                max-size="4"
+                                on-select-page="select(page)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                boundary-links="true"></pagination>
                 </div>
             </div>
         </footer>
-
     </section>
 
 </div>

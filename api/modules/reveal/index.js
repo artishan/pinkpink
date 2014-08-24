@@ -25,7 +25,9 @@ exports.putDeck = function(request, reply) {
 }
 
 exports.getSlides = function(request, reply) {
-  db.slide.find({}, function(err, slides){
+  console.log(request.params);
+  db.slide.find({deck_id: request.params.deckId}, function(err, slides){
+    console.log(slides);
     return reply(slides);
   });
 };

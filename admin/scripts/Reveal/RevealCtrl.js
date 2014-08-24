@@ -137,39 +137,17 @@
       return init();
     }
   ]).controller('revealSlidesCtrl', [
-    '$scope', '$filter', function($scope, $filter) {
+    '$scope', '$filter', '$routeParams', 'Restangular', function($scope, $filter, $routeParams, Restangular) {
       var init;
-      $scope.stores = [
-        {
-          name: '안녕 고구마 ',
-          price: '$$',
-          sales: 292,
-          rating: 4.0
-        }, {
-          name: 'Eat On Monday Truck',
-          price: '$',
-          sales: 119,
-          rating: 4.3
-        }, {
-          name: 'Tea Era',
-          price: '$',
-          sales: 874,
-          rating: 4.0
-        }, {
-          name: 'Rogers Deli',
-          price: '$',
-          sales: 347,
-          rating: 4.2
-        }
-      ];
+      var deckId = $routeParams.deckId;
       $scope.searchKeywords = '';
-      $scope.filteredStores = [];
+      $scope.filtered = [];
       $scope.row = '';
       $scope.select = function(page) {
         var end, start;
         start = (page - 1) * $scope.numPerPage;
         end = start + $scope.numPerPage;
-        return $scope.currentPageStores = $scope.filteredStores.slice(start, end);
+        return $scope.currentPage = $scope.filtered.slice(start, end);
       };
       $scope.onFilterChange = function() {
         $scope.select(1);
@@ -185,7 +163,7 @@
         return $scope.currentPage = 1;
       };
       $scope.search = function() {
-        $scope.filteredStores = $filter('filter')($scope.stores, $scope.searchKeywords);
+        $scope.filtered = $filter('filter')($scope.slides, $scope.searchKeywords);
         return $scope.onFilterChange();
       };
       $scope.order = function(rowName) {
@@ -193,7 +171,7 @@
           return;
         }
         $scope.row = rowName;
-        $scope.filteredStores = $filter('orderBy')($scope.stores, rowName);
+        $scope.filtered = $filter('orderBy')($scope.slides, rowName);
         return $scope.onOrderChange();
       };
       $scope.numPerPageOpt = [3, 5, 10, 20];
@@ -201,8 +179,11 @@
       $scope.currentPage = 1;
       $scope.currentPageStores = [];
       init = function() {
-        $scope.search();
-        return $scope.select($scope.currentPage);
+        Restangular.all("reveal/slides/" + deckId).getList().then(function(slides) {
+          $scope.slides = slides;
+          $scope.search();
+          return $scope.select($scope.currentPage);
+        })
       };
       return init();
     }
