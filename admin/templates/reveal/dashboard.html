@@ -5,7 +5,7 @@
         <section class="reveal cube center">
           <div class="slides">
             <section class="stack present">
-              <section class="present" marked="editor.content">
+              <section class="present" marked="preview.content">
               </section>
             </section>
           </div>
@@ -16,26 +16,12 @@
       <section class="panel panel-default">
           <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Overview</strong></div>
           <div class="panel-body">
-
+            <a class="btn btn-default btn-block" ng-click="change()">테스트</a>
+            <a class="btn btn-default btn-block" ng-click="change(deck._id)" ng-repeat="deck in decks">{{deck.name}}</a>
           </div>
+          <!-- <pre>slides = {{slides | json}}</pre> -->
+          <a class="btn btn-default btn-block" ng-click="view(slide)" ng-repeat="slide in slides">{{slide.name}}</a>
       </section>
-      <!-- Editor -->
-      <section class="panel panel-default">
-        <div class="panel-heading">
-          <strong><span class="glyphicon glyphicon-th"></span> Editor</strong>
-        </div>
-        <div class="panel-body">
-          <div ui-ace="{
-          useWrapMode : true,
-          mode: 'markdown'
-        }" ng-model="editor.content">
-          </div>
-          <button class="btn btn-success" ng-click="putSlide(editor)" ng-disabled="isReadonly">Save</button>
-          <button class="btn btn-danger" ng-click="editor = {}" ng-disabled="isReadonly">Clear</button>
-          <pre>form = {{editor | json}}</pre>
-        </div>
-      </section>
-      <!-- end Editor -->
     </div>
   </div>
 <section>
@@ -49,5 +35,9 @@
     height : 200px;
   }
 </style>
+<script src="/bower_components/components-revealjs/js/reveal.js"></script>
+<script type="text/javascript">
+
+</script>
 <link rel="stylesheet" href="/bower_components/components-revealjs/css/reveal.css">
 <link rel="stylesheet" href="/bower_components/components-revealjs/css/theme/default.css">

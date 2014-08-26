@@ -43,12 +43,14 @@
         templateUrl: '/templates/reveal/dashboard.html'
       }).when('/reveal/slide/edit/:slideId', {
         templateUrl: '/templates/reveal/edit_slide.html'
-      }).when('/reveal/deck/edit/:deckId', {
-        templateUrl: '/templates/reveal/edit_deck.html'
       }).when('/reveal/deck/list', {
         templateUrl: '/templates/reveal/list_deck.html'
       }).when('/reveal/slide/list/:deckId', {
         templateUrl: '/templates/reveal/list_slide.html'
+      }).when('/reveal/slide/add/:deckId', {
+        templateUrl: '/templates/reveal/edit_slide.html'
+      }).when('/reveal/slide/edit/:slideId', {
+        templateUrl: '/templates/reveal/edit_slide.html'
       }).when('/ui/typography', {
         templateUrl: '/templates/ui/typography.html'
       }).when('/ui/buttons', {

@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3>Add deck</h3>
+</div>
+<div class="modal-body">
+    <form name="add" class="form-horizontal form-validation ng-pristine ng-invalid ng-invalid-required" data-ng-submit="submitForm(add)">
+        <div class="callout callout-info">
+            <p>Sumbit button will be active only when all fields are valid.</p>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="">Deck Name</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength ng-valid-minlength" placeholder="Min length 2, Max length 30" data-ng-model="add.name" required="" data-ng-minlength="2" data-ng-maxlength="30">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="">Content</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-email" data-ng-model="add.content" required="">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="alert alert-info ng-hide" data-ng-show="showInfoOnSubmit">{{add.name}} deck is created.</div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg" data-ng-disabled="!canSubmit()">Create</button>
+      <button class="btn btn-warning btn-block btn-lg" ng-click="cancel()">Cancel</button>
+    </form>
+    <pre>add = {{add | json}}</pre>
+</div>
+<div class="modal-footer">
+
+    <!-- <button class="btn btn-primary" ng-click="ok()">Create</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button> -->
+</div>
