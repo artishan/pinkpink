@@ -19,7 +19,7 @@
                         Showing {{filteredDecks.length}}/{{decks.length}} entries
                     </span>
                 </div>
-                      <button class="btn btn-info" ng-click="open()">Add deck</button>
+                <button class="btn btn-info" ng-click="open()">Add deck</button>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
             </thead>
             <tbody>
                 <tr data-ng-repeat="deck in currentPageDecks">
-                    <td><a href="#!/reveal/slide/list/{{deck._id}}">{{deck.name}}</a></td>
+                    <td><a href="#!/reveal/decks/{{deck._id}}/slides">{{deck.name}}</a></td>
                     <td>{{deck.content}}</td>
                 </tr>
             </tbody>

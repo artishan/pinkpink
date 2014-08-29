@@ -14,8 +14,6 @@ var slideTag = new Datastore({ filename: rootPath + '/data/reveal/slide_tag', au
 var slidePage = new Datastore({ filename: rootPath + '/data/reveal/slide_page', autoload: true });
 
 // Create a "unique" index for the photo name and user ip
-deck.ensureIndex({fieldName: 'name', unique: true});
-slide.ensureIndex({fieldName: 'name', unique: true});
 slideTag.ensureIndex({fieldName: 'name', unique: true});
 
 module.exports = {

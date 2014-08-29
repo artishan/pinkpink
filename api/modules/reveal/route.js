@@ -9,7 +9,7 @@ module.exports = [
     }
   },
   { method: 'GET',
-    path: '/reveal/deck/{id}',
+    path: '/reveal/deck/{deckId}',
     config: {
       handler: reveal.getDeck
     }
@@ -21,7 +21,7 @@ module.exports = [
     }
   },
   { method: 'PUT',
-    path: '/reveal/deck/{id}',
+    path: '/reveal/deck/{deckId}',
     config: {
       handler: reveal.putDeck
     }
@@ -33,9 +33,15 @@ module.exports = [
     }
   },
   { method: 'GET',
-    path: '/reveal/slide/{id}',
+    path: '/reveal/slide/{slideId}',
     config: {
       handler: reveal.getSlide
+    }
+  },
+  { method: 'PUT',
+    path: '/reveal/slide/{slideId}',
+    config: {
+      handler: reveal.putSlide
     }
   },
   { method: 'PUT',

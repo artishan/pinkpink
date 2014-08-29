@@ -41,15 +41,13 @@
         templateUrl: '/templates/swagger/list.html'
       }).when('/reveal/dashboard', {
         templateUrl: '/templates/reveal/dashboard.html'
-      }).when('/reveal/slide/edit/:slideId', {
-        templateUrl: '/templates/reveal/edit_slide.html'
-      }).when('/reveal/deck/list', {
+      }).when('/reveal/decks', {
         templateUrl: '/templates/reveal/list_deck.html'
-      }).when('/reveal/slide/list/:deckId', {
+      }).when('/reveal/decks/:deckId/slides', {
         templateUrl: '/templates/reveal/list_slide.html'
-      }).when('/reveal/slide/add/:deckId', {
+      }).when('/reveal/decks/:deckId/slide', {
         templateUrl: '/templates/reveal/edit_slide.html'
-      }).when('/reveal/slide/edit/:slideId', {
+      }).when('/reveal/decks/:deckId/slides/:slideId', {
         templateUrl: '/templates/reveal/edit_slide.html'
       }).when('/ui/typography', {
         templateUrl: '/templates/ui/typography.html'

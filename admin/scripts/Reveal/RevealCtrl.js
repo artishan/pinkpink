@@ -66,6 +66,8 @@
     '$scope', '$routeParams', 'Restangular', function($scope, $routeParams, Restangular) {
       var restDeck;
       var route = $routeParams;
+      console.log($routeParams);
+      $scope.slide_id = route.slideId;
       $scope.deck_id = route.deckId;
       $scope.editor ={};
       if(route.slideId === undefined){
@@ -75,14 +77,23 @@
         restDeck =  Restangular.all("reveal").one('slide/'+route.slideId);
         restDeck.getList().then(function(response){
           $scope.editor = response[0];
-          console.log(response);
         });
       }
       $scope.putSlide = function(data){
         restDeck.deck_id = $scope.deck_id;
         restDeck.name = data.name;
         restDeck.content = data.content;
-        restDeck.put();
+        restDeck.put().then(function(response) {
+          var message = "Update";
+          if(route.slideId === undefined){
+            message = "Create";
+            route.slideId = response.slideId;
+            restDeck = restDeck.one(route.slideId);
+          }
+          console.log(message);
+        }, function(response) {
+          console.log("Error with status code", response.status);
+        });
       }
       $scope.aceLoaded = function(_editor){
         // Editor part

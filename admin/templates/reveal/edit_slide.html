@@ -39,20 +39,18 @@
           </div>
           <button class="btn btn-success" ng-click="putSlide(editor)" ng-disabled="isReadonly">Save</button>
           <button class="btn btn-danger" ng-click="editor = {}" ng-disabled="isReadonly">Clear</button>
-          <pre>form = {{editor | json}}</pre>
+          <!-- <pre>form = {{editor | json}}</pre> -->
         </div>
       </section>
       <!-- end Editor -->
-      <!-- Editor -->
       <section class="panel panel-default">
         <div class="panel-heading">
           <strong><span class="glyphicon glyphicon-th"></span> Navigation</strong>
         </div>
         <div class="panel-body">
-          <a class="btn btn-success" href="#!/reveal/slide/list/{{deck_id}}">LIST</a>
+          <a class="btn btn-success" href="#!/reveal/decks/{{deck_id}}/slides">LIST</a>
         </div>
       </section>
-      <!-- end Editor -->
     </div>
   </div>
 <section>

@@ -19,6 +19,7 @@
                         Showing {{filteredStores.length}}/{{stores.length}} entries
                     </span>
                 </div>
+                <button class="btn btn-info" ng-click="Delete()">Delete deck</button>
             </div>
         </div>
         <table class="table table-bordered table-striped table-responsive">
@@ -46,11 +47,11 @@
             </thead>
             <tbody>
                 <tr>
-                  <td><a href ="#!/reveal/slide/add/{{deckId}}">Add slide</td></td>
+                  <td><a href ="#!/reveal/decks/{{deckId}}/slide">Add slide</td></td>
                   <td></td>
                 </tr>
                 <tr data-ng-repeat="slide in currentPage">
-                    <td><a href="#!/reveal/slide/edit/{{slide._id}}">{{slide.name}}</a></td>
+                    <td><a href="#!/reveal/decks/{{deckId}}/slides/{{slide._id}}">{{slide.name}}</a></td>
                     <td>{{slide.content}}</td>
                 </tr>
             </tbody>
