@@ -8,7 +8,7 @@ exports.getDecks = function(request, reply) {
 
 exports.getDeck = function(request, reply) {
   console.log(request.params);
-  db.slide.find({_id: request.params.deckId}, function(err, slide){
+  db.deck.find({_id: request.params.deckId}, function(err, slide){
     console.log(slide);
     return reply(slide);
   });
@@ -32,7 +32,27 @@ exports.putDeck = function(request, reply) {
       reply(data);
     });
   }
+}
 
+exports.deleteDeck = function(request, reply) {
+  db.slide.remove({deck_id: request.params.deckId}, function(err, slide){
+    if(err){
+      reply(err);
+    }
+  });
+  db.deck.remove({_id: request.params.deckId}, function(err, deck){
+    if(err){
+      reply(err);
+    }
+    return reply(deck);
+  });
+}
+
+exports.getSlide = function(request, reply) {
+  db.slide.find({_id: request.params.slideId}, function(err, slide){
+    console.log(slide);
+    return reply(slide);
+  });
 }
 
 exports.getSlides = function(request, reply) {
@@ -42,8 +62,8 @@ exports.getSlides = function(request, reply) {
   });
 };
 
-exports.getSlide = function(request, reply) {
-  db.slide.find({_id: request.params.slideId}, function(err, slide){
+exports.deleteSlide = function(request, reply) {
+  db.slide.remove({_id: request.params.slideId}, function(err, slide){
     console.log(slide);
     return reply(slide);
   });

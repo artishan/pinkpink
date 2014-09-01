@@ -1,0 +1,68 @@
+<section class="page-form-ele page" data-ng-controller="revealSlideCtrl">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="reveal-preview">
+        <section class="reveal cube center">
+          <div class="slides">
+            <section class="stack present">
+              <section class="present" marked="editor.content">
+              </section>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <section class="panel panel-default">
+          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Slide</strong></div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="col-sm-3">
+                <label for>Slide name</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="editor.name">
+              </div>
+            </div>
+          </div>
+      </section>
+      <!-- Editor -->
+      <section class="panel panel-default">
+        <div class="panel-heading">
+          <strong><span class="glyphicon glyphicon-th"></span> Editor</strong>
+        </div>
+        <div class="panel-body">
+          <div ui-ace="{
+          useWrapMode : true,
+          mode: 'markdown'
+        }" ng-model="editor.content">
+          </div>
+          <button class="btn btn-success" ng-click="putSlide(editor)" ng-disabled="isReadonly">Save</button>
+          <button class="btn btn-danger" ng-click="editor = {}" ng-disabled="isReadonly">Clear</button>
+          <!-- <pre>form = {{editor | json}}</pre> -->
+        </div>
+      </section>
+      <!-- end Editor -->
+      <section class="panel panel-default">
+        <div class="panel-heading">
+          <strong><span class="glyphicon glyphicon-th"></span> Navigation</strong>
+        </div>
+        <div class="panel-body">
+          <a class="btn btn-success" href="#!/reveal/decks/{{deck_id}}/slides">LIST</a>
+        </div>
+      </section>
+    </div>
+  </div>
+<section>
+<style type="text/css">
+.reveal-preview{
+/*  display: block;
+  width: 700px;
+  height: 700px;*/
+}
+  .ace_editor  {
+    height : 200px;
+  }
+</style>
+<link rel="stylesheet" href="/bower_components/components-revealjs/css/reveal.css">
+<link rel="stylesheet" href="/bower_components/components-revealjs/css/theme/default.css">

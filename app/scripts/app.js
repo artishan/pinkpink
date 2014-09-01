@@ -5,21 +5,33 @@ angular.module('pinkpinkApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'app.reveal.controller',
+  'app.reveal.directives',
+  'ui.ace',
+  'hc.marked',
+  'restangular',
   'ui.bootstrap'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
 
     $routeProvider.when("/vote/hi", {templateUrl: 'page/login', controller: 'LoginCtrl'});
 
     $routeProvider
       .when('/', {
           redirectTo: 'vote'
-      })
-      // .when('/', {
-      //   templateUrl: 'partials/main',
-      //   controller: 'MainCtrl'
-      // })
-      .when('/vote', {
+      }).when('/reveal/dashboard', {
+        templateUrl: '/templates/reveal/dashboard.html'
+      }).when('/reveal/decks', {
+        templateUrl: '/templates/reveal/list_deck.html'
+      }).when('/reveal/decks/:deckId/slides', {
+        templateUrl: '/templates/reveal/list_slide.html'
+      }).when('/reveal/decks/:deckId/slide', {
+        templateUrl: '/templates/reveal/edit_slide.html'
+      }).when('/reveal/decks/:deckId/slides/:slideId', {
+        templateUrl: '/templates/reveal/edit_slide.html'
+      }).when('/reveal/decks/:deckId/preview', {
+        templateUrl: '/templates/reveal/preview.html'
+      }).when('/vote', {
         templateUrl: 'templates/vote/index.html',
         controller: 'VoteCtrl'
       })
@@ -44,7 +56,7 @@ angular.module('pinkpinkApp', [
         redirectTo: '/404'
       });
 
-    $locationProvider.hashPrefix('!');
+    $locationProvider.html5Mode(true).hashPrefix('!');
 
     // Intercept 401s and redirect you to login
     $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
@@ -60,6 +72,7 @@ angular.module('pinkpinkApp', [
         }
       };
     }]);
+    RestangularProvider.setBaseUrl('http://api.pinkpink.hansh.kr');
   })
   .run(function ($rootScope, $location, Auth) {
 

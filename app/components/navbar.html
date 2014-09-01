@@ -1,4 +1,4 @@
-<div class="header" ng-controller="NavbarCtrl">
+<!-- <div class="header" ng-controller="NavbarCtrl">
   <ul class="nav nav-pills pull-right">
     <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
         <a ng-href="{{item.link}}">{{item.title}}</a>
@@ -11,3 +11,31 @@
   </ul>
   <h3 class="text-muted"><a href="/"> A2 Photogenic</a></h3>
 </div>
+ -->
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <a href="#">
+        Pinkpink
+      </a>
+    </li>
+    <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+        <a ng-href="{{item.link}}">{{item.title}}</a>
+    </li>
+    <li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/#!login">Login</a></li>
+    <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/#!signup">Sign up</a></li>
+    <li><a href="#!/reveal/dashboard"><i class="fa fa-caret-right"></i><span>Dashboard</span></a></li>
+    <li><a href="#!/reveal/decks"><i class="fa fa-caret-right"></i><span>Deck list</span></a></li>
+    <li ng-hide="currentUser"><a href="/reveal">Reveal</a></li>
+    <li ng-hide="currentUser"><a href="http://admin.pinkpink.hansh.kr">Admin</a></li>
+  <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
+    </ul>
+</div>
+<!-- /#sidebar-wrapper -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+</script>

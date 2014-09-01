@@ -26,6 +26,12 @@ module.exports = [
       handler: reveal.putDeck
     }
   },
+  { method: 'DELETE',
+    path: '/reveal/deck/{deckId}',
+    config: {
+      handler: reveal.deleteDeck
+    }
+  },
   { method: 'GET',
     path: '/reveal/slides/{deckId}',
     config: {
@@ -48,6 +54,12 @@ module.exports = [
     path: '/reveal/slide',
     config: {
       handler: reveal.putSlide
+    }
+  },
+  { method: 'DELETE',
+    path: '/reveal/slide',
+    config: {
+      handler: reveal.deleteSlide
     }
   }
 ];

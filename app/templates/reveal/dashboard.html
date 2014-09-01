@@ -1,0 +1,44 @@
+<section class="page-form-ele page" data-ng-controller="revealDashboardCtrl">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="reveal-preview">
+        <section class="reveal cube center">
+          <div slideshow='slides'></div>
+          <!-- <div class="slides">
+            <section class="stack present">
+              <section class="present" marked="preview.content">
+              </section>
+            </section>
+          </div> -->
+        </section>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <section class="panel panel-default">
+          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Overview</strong></div>
+          <div class="panel-body">
+            <a class="btn btn-default btn-block" ng-click="change()">테스트</a>
+            <a class="btn btn-default btn-block" ng-click="change(deck._id)" ng-repeat="deck in decks">{{deck.name}}</a>
+          </div>
+          <!-- <pre>slides = {{slides | json}}</pre> -->
+          <a class="btn btn-default btn-block" ng-click="view(slide)" ng-repeat="slide in slides">{{slide.name}}</a>
+      </section>
+    </div>
+  </div>
+<section>
+<style type="text/css">
+.reveal-preview{
+/*  display: block;
+  width: 700px;
+  height: 700px;*/
+}
+  .ace_editor  {
+    height : 200px;
+  }
+</style>
+<script src="/bower_components/components-revealjs/js/reveal.js"></script>
+<script type="text/javascript">
+
+</script>
+<link rel="stylesheet" href="/bower_components/components-revealjs/css/reveal.css">
+<link rel="stylesheet" href="/bower_components/components-revealjs/css/theme/default.css">

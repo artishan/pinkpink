@@ -16,12 +16,21 @@
 <!-- endbuild -->
 </head>
 <body ng-app="pinkpinkApp">
+
 <!--[if lt IE 7]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<div ng-include="'/components/navbar.html'"></div>
-<!-- Add your site or application content here -->
-<div class="container" ng-view=""></div>
+<div id="wrapper">
+  <div ng-include="'/components/navbar.html'"></div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" ng-view="">
+    <!-- <a href="#menu-toggle" class="btn btn-default pull-left" id="menu-toggle">Toggle Menu</a> -->
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
  <script>
@@ -42,13 +51,20 @@
 <!-- bower:js -->
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/es5-shim/es5-shim.js"></script>
-<script src="/bower_components/angular/angular.js"></scripㅖt>
+<script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/json3/lib/json3.min.js"></script>
+<script src="/bower_components/underscore/underscore-min.js"></script>
+<script src="/bower_components/marked/lib/marked.js"></script>
 <script src="/bower_components/angular-resource/angular-resource.js"></script>
 <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/bower_components/angular-marked/angular-marked.js"></script>
+<script src="/bower_components/restangular/dist/restangular.js"></script>
+<script src="/bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="/bower_components/angular-ui-ace/ui-ace.js"></script>
+<script src="/bower_components/components-revealjs/js/reveal.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -64,6 +80,8 @@
 <script src="/scripts/services/session.js"></script>
 <script src="/scripts/services/user.js"></script>
 <script src="/scripts/directives/mongooseError.js"></script>
+<script src="/scripts/Reveal/RevealCtrl.js"></script>
+<script src="/scripts/Reveal/RevealDirective.js"></script>
 <!-- endbuild -->
 
 </body>
