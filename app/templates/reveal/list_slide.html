@@ -19,6 +19,8 @@
                         Showing {{filteredStores.length}}/{{stores.length}} entries
                     </span>
                 </div>
+                <a class="btn btn-info" href ="#!/reveal/decks/{{deckId}}/slide">Add slide</a>
+                <a class="btn btn-info" href="#!/reveal/decks/{{deckId}}/preview">Slide show</a>
                 <button class="btn btn-info" ng-click="Delete()">Delete deck</button>
             </div>
         </div>
@@ -43,20 +45,20 @@
                               data-ng-click=" order('-content') "
                               data-ng-class="{active: row == '-price'}"></span>
                     </div></th>
+                    <th> x </th>
+                    <th> y </th>
+                    <th> - </th>
                     <th> - </th>
                     <th> - </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                  <td><a href ="#!/reveal/decks/{{deckId}}/slide">Add slide</td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
                 <tr data-ng-repeat="slide in currentPage">
                     <td><a href="#!/reveal/decks/{{deckId}}/slides/{{slide._id}}">{{slide.name}}</a></td>
                     <td>{{slide.content}}</td>
+                    <td><input type="text" class="form-control" placeholder="X" data-ng-model="slide.x"></td>
+                    <td><input type="text" class="form-control" placeholder="y" data-ng-model="slide.y"></td>
+                    <td><a class="btn btn-info" data-ng-click="edit(slide)">Edit</a></td>
                     <td><a class="btn btn-info" data-ng-click="copy(slide)">Copy</a></td>
                     <td><a class="btn btn-info" data-ng-click="delete(slide)">Delete</a></td>
                 </tr>

@@ -17,13 +17,16 @@
       init = function() {
         slides.one(route.deckId).getList().then(function(slides) {
           $scope.slides = slides;
-          $timeout(function() {
-            $scope.load = false;
-            Reveal.initialize({
-              loop: false,
-              transition: Reveal.getQueryHash().transition || 'cube'
-            });
-          }, 3000);
+          // $timeout(function() {
+          //   $scope.load = false;
+          //   Reveal.initialize({
+          //     width: 1024,
+          //     height: 1000,
+          //     margin: 0.1,
+          //     loop: false,
+          //     transition: Reveal.getQueryHash().transition || 'cube'
+          //   });
+          // }, 3000);
 
         })
       };
@@ -314,6 +317,21 @@
           logger.logWarning(slide.name + ' 슬라이드를 삭제에 실패하였습니다.');
         });
       };
+      $scope.edit = function(slide) {
+        var deckApi = Restangular.all("reveal").one('slide').one(slide._id);
+        deckApi.deck_id = slide.deck_id;
+        deckApi.name = slide.name;
+        deckApi.content = slide.content;
+        deckApi.x = slide.x;
+        deckApi.y = slide.y;
+        deckApi.put().then(function() {
+          console.log("Object saved OK");
+          logger.logSuccess(slide.name + ' 슬라이드를 수정하였습니다.');
+          init();
+        }, function() {
+          logger.logWarning(slide.name + ' 슬라이드를 수정에 실패하였습니다.');
+        });
+      };
       $scope.copy = function(slide) {
         var deckApi = Restangular.all("reveal").one('slide');
         deckApi.deck_id = slide.deck_id;
@@ -324,7 +342,7 @@
           logger.logSuccess(slide.name + ' 슬라이드를 복제하였습니다.');
           init();
         }, function() {
-          logger.logWarning(slide.name + ' 슬라이드를 복에 실패하였습니다.');
+          logger.logWarning(slide.name + ' 슬라이드를 복제에 실패하였습니다.');
         });
       };
       $scope.search = function() {
