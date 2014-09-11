@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('pinkpinkApp', [
+  'ngDraggable',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'app.reveal.controller',
-  'app.reveal.directives',
+  'reveal.controller',
+  'reveal.directives',
+  'reveal.services',
   'ui.ace',
   'hc.marked',
   'restangular',

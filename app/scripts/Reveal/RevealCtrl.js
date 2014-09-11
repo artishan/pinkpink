@@ -1,9 +1,10 @@
 (function() {
   'use strict';
-  angular.module('app.reveal.controller', [])
+  angular.module('reveal.controller', [])
   .controller('revealCtrl', [
-    '$scope', function($scope) {
+    '$scope', 'Restangular', function($scope, Restangular) {
       console.log("revealCtrl");
+      $scope.scope_test = 'hello';
       return $scope.tags = ['foo', 'bar'];
     }
   ]).controller('revealPreviewCtrl', [
@@ -31,8 +32,9 @@
   ]).controller('revealDashboardCtrl', [
     '$scope', 'Restangular', function($scope, Restangular) {
       var init;
-      var decks = Restangular.all("reveal/decks");
-      var slides = Restangular.all("reveal/slides");
+      var revealApi = Restangular.all("reveal");
+      var decks = revealApi.one("decks");
+      var slides = revealApi.one("slides");
       $scope.preview;
       $scope.decks = {};
       $scope.slides = {};
@@ -131,8 +133,9 @@
         _session.on("change", function(){ console.log('chANGE') });
       };
     }
-  ]).controller('ModalInstanceCtrl', [
-    '$scope', '$modalInstance', 'Restangular', function($scope, $modalInstance, Restangular) {
+  ]).controller('revealModalDeckCtrl', [
+    '$scope', '$modalInstance', 'Restangular', 'revealApi',
+    function($scope, $modalInstance, Restangular, revealApi) {
       var original;
       $scope.add = {
         name: '',
@@ -160,20 +163,35 @@
         // return $scope.add.$valid && !angular.equals($scope.add, original);
       };
       return $scope.submitForm = function(data) {
-        $scope.showInfoOnSubmit = true;
-        var putDeck = Restangular.all("reveal").one('deck');
-        putDeck.name = data.name;
-        putDeck.content = data.content;
-        putDeck.put();
+        // $scope.showInfoOnSubmit = true;
+        var test = function() {
+          console.log('성공');
+          $modalInstance.dismiss("cancel");
+        };
+
+        revealApi.createDeck(data, test, function(){
+          console.log('error');
+        });
+        // var putDeck = Restangular.all("reveal").one('deck');
+        // putDeck.name = data.name;
+        // putDeck.content = data.content;
+        // putDeck.put();
+
+        // logger.logSuccess(data.name + ' 덱을 추가하였습니다.');
         return $scope.revert();
       };
     }
   ]).controller('revealDecksCtrl', [
-    '$scope', '$filter', '$modal', 'Restangular', function($scope, $filter, $modal, Restangular) {
+    '$scope', '$filter', '$modal', 'Restangular', 'logger',
+    function($scope, $filter, $modal, Restangular, logger) {
       var init;
       $scope.searchKeywords = '';
       $scope.filteredDecks = [];
       $scope.row = '';
+      $scope.notify = function(text) {
+        logger.log("Heads up! This alert needs your attention, but it's not super important.");
+        console.log(text);
+      }
       $scope.select = function(page) {
         var end, start;
         start = (page - 1) * $scope.numPerPage;
@@ -193,6 +211,11 @@
         $scope.select(1);
         return $scope.currentPage = 1;
       };
+      $scope.delete = function(deckId) {
+        var deckApi = Restangular.all("reveal").one('deck');
+        deckApi.one(deckId).remove();
+        logger.log('덱을 삭제하였습니다.');
+      };
       $scope.search = function() {
         $scope.filteredDecks = $filter('filter')($scope.decks, $scope.searchKeywords);
         return $scope.onFilterChange();
@@ -210,7 +233,24 @@
         var modalInstance;
         modalInstance = $modal.open({
           templateUrl: "templates/reveal/add_deck_modal.html",
-          controller: 'ModalInstanceCtrl',
+          controller: 'revealModalDeckCtrl',
+          resolve: {
+            items: function() {
+              return $scope.items;
+            }
+          }
+        });
+        modalInstance.result.then((function(selectedItem) {
+          $scope.selected = selectedItem;
+        }), function() {
+          // $log.info("Modal dismissed at: " + new Date());
+        });
+      };
+      $scope.edit = function() {
+        var modalInstance;
+        modalInstance = $modal.open({
+          templateUrl: "templates/reveal/edit_deck_modal.html",
+          controller: 'revealModalDeckCtrl',
           resolve: {
             items: function() {
               return $scope.items;
@@ -237,11 +277,11 @@
       return init();
     }
   ]).controller('revealSlidesCtrl', [
-    '$scope', '$filter', '$routeParams', 'Restangular', function($scope, $filter, $routeParams, Restangular) {
+    '$scope', '$filter', '$routeParams', 'Restangular', 'logger',
+    function($scope, $filter, $routeParams, Restangular, logger) {
       var init;
       var deckId = $routeParams.deckId;
       $scope.deckId = deckId;
-      console.log(deckId);
       $scope.searchKeywords = '';
       $scope.filtered = [];
       $scope.row = '';
@@ -263,6 +303,29 @@
       $scope.onOrderChange = function() {
         $scope.select(1);
         return $scope.currentPage = 1;
+      };
+      $scope.delete = function(slide) {
+        var deckApi = Restangular.all("reveal").one('slide');
+        deckApi.one(slide._id).remove().then(function() {
+          console.log("Object saved OK");
+          logger.logWarning(slide.name + ' 슬라이드를 삭제하였습니다.');
+          init();
+        }, function() {
+          logger.logWarning(slide.name + ' 슬라이드를 삭제에 실패하였습니다.');
+        });
+      };
+      $scope.copy = function(slide) {
+        var deckApi = Restangular.all("reveal").one('slide');
+        deckApi.deck_id = slide.deck_id;
+        deckApi.name = slide.name;
+        deckApi.content = slide.content;
+        deckApi.put().then(function() {
+          console.log("Object saved OK");
+          logger.logSuccess(slide.name + ' 슬라이드를 복제하였습니다.');
+          init();
+        }, function() {
+          logger.logWarning(slide.name + ' 슬라이드를 복에 실패하였습니다.');
+        });
       };
       $scope.search = function() {
         $scope.filtered = $filter('filter')($scope.slides, $scope.searchKeywords);

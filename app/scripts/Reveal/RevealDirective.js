@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.reveal.directives', [])
+  angular.module('reveal.directives', [])
   .directive('slideshow', function() {
     return {
       scope: {

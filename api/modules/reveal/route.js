@@ -57,7 +57,7 @@ module.exports = [
     }
   },
   { method: 'DELETE',
-    path: '/reveal/slide',
+    path: '/reveal/slide/{slideId}',
     config: {
       handler: reveal.deleteSlide
     }

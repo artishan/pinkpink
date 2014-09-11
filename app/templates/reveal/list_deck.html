@@ -20,6 +20,7 @@
                     </span>
                 </div>
                 <button class="btn btn-info" ng-click="open()">Add deck</button>
+                <button class="btn btn-w-md btn-gap btn-info" data-ng-click="notify('info')">info message</button>
             </div>
         </div>
 
@@ -45,6 +46,7 @@
                               data-ng-class="{active: row == '-content'}"></span>
                     </div></th>
                     <th> - </th>
+                    <th> - </th>
                 </tr>
             </thead>
             <tbody>
@@ -52,6 +54,7 @@
                     <td><a href="#!/reveal/decks/{{deck._id}}/slides">{{deck.name}}</a></td>
                     <td>{{deck.content}}</td>
                     <td><a class="btn btn-info" href="#!/reveal/decks/{{deck._id}}/preview">Slide show</a></td>
+                    <td><a class="btn btn-info" data-ng-click="delete(deck._id)">Delete</a></td>
                 </tr>
             </tbody>
         </table>

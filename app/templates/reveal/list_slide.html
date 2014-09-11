@@ -43,16 +43,22 @@
                               data-ng-click=" order('-content') "
                               data-ng-class="{active: row == '-price'}"></span>
                     </div></th>
+                    <th> - </th>
+                    <th> - </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                   <td><a href ="#!/reveal/decks/{{deckId}}/slide">Add slide</td></td>
                   <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr data-ng-repeat="slide in currentPage">
                     <td><a href="#!/reveal/decks/{{deckId}}/slides/{{slide._id}}">{{slide.name}}</a></td>
                     <td>{{slide.content}}</td>
+                    <td><a class="btn btn-info" data-ng-click="copy(slide)">Copy</a></td>
+                    <td><a class="btn btn-info" data-ng-click="delete(slide)">Delete</a></td>
                 </tr>
             </tbody>
         </table>
