@@ -45,8 +45,9 @@
                               data-ng-click=" order('-content') "
                               data-ng-class="{active: row == '-price'}"></span>
                     </div></th>
-                    <th> x </th>
-                    <th> y </th>
+                    <th><div class="th">x</div></th>
+                    <th><div class="th">y</div></th>
+                    <th> - </th>
                     <th> - </th>
                     <th> - </th>
                     <th> - </th>
@@ -54,11 +55,12 @@
             </thead>
             <tbody>
                 <tr data-ng-repeat="slide in currentPage">
-                    <td><a href="#!/reveal/decks/{{deckId}}/slides/{{slide._id}}">{{slide.name}}</a></td>
+                    <td><input type="text" class="form-control" placeholder="X" data-ng-model="slide.name"></td>
                     <td>{{slide.content}}</td>
                     <td><input type="text" class="form-control" placeholder="X" data-ng-model="slide.x"></td>
                     <td><input type="text" class="form-control" placeholder="y" data-ng-model="slide.y"></td>
                     <td><a class="btn btn-info" data-ng-click="edit(slide)">Edit</a></td>
+                    <td><a class="btn btn-info" href="#!/reveal/decks/{{deckId}}/slides/{{slide._id}}">Slide Edit</a></td>
                     <td><a class="btn btn-info" data-ng-click="copy(slide)">Copy</a></td>
                     <td><a class="btn btn-info" data-ng-click="delete(slide)">Delete</a></td>
                 </tr>
@@ -76,16 +78,6 @@
                         </select>
                         entries per page
                     </span>
-                </div>
-                <div class="col-md-6 text-right pagination-container">
-                    <pagination class="pagination-sm"
-                                page="currentPage"
-                                total-items="filteredStores.length"
-                                max-size="4"
-                                on-select-page="select(page)"
-                                items-per-page="numPerPage"
-                                rotate="false"
-                                boundary-links="true"></pagination>
                 </div>
             </div>
         </footer>

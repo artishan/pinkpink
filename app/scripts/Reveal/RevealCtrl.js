@@ -266,7 +266,7 @@
           // $log.info("Modal dismissed at: " + new Date());
         });
       };
-      $scope.numPerPageOpt = [3, 5, 10, 20];
+      $scope.numPerPageOpt = [3, 5, 30, 50];
       $scope.numPerPage = $scope.numPerPageOpt[2];
       $scope.currentPage = 1;
       $scope.currentPageStores = [];
@@ -357,7 +357,7 @@
         $scope.filtered = $filter('orderBy')($scope.slides, rowName);
         return $scope.onOrderChange();
       };
-      $scope.numPerPageOpt = [3, 5, 10, 20];
+      $scope.numPerPageOpt = [3, 5, 30, 20];
       $scope.numPerPage = $scope.numPerPageOpt[2];
       $scope.currentPage = 1;
       $scope.currentPageStores = [];

@@ -23,13 +23,16 @@
     <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
         <a ng-href="{{item.link}}">{{item.title}}</a>
     </li>
+    <li class="active"><a href="#!/reveal/decks/pCxzZ2VlEh13p4hG/preview">A2C</a></li>
+    <li ng-class="{active: isActive('/reveal/dashboard')}"><a href="#!/reveal/dashboard">Dashboard</a></li>
+    <li ng-class="{active: isActive('/reveal/decks')}"><a href="#!/reveal/decks">Reveal</li>
+    <li ng-hide="currentUser"><a href="/photo">Photo</a></li>
+    <li ng-hide="currentUser"><a href="/blog">Blog</a></li>
+    <li ng-hide="currentUser"><a href="/tutorial">Tutorial</a></li>
     <li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/#!login">Login</a></li>
     <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/#!signup">Sign up</a></li>
-    <li><a href="#!/reveal/dashboard"><i class="fa fa-caret-right"></i><span>Dashboard</span></a></li>
-    <li><a href="#!/reveal/decks"><i class="fa fa-caret-right"></i><span>Deck list</span></a></li>
-    <li ng-hide="currentUser"><a href="/reveal">Reveal</a></li>
+    <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
     <li ng-hide="currentUser"><a href="http://admin.pinkpink.hansh.kr">Admin</a></li>
-  <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
     </ul>
 </div>
 <!-- /#sidebar-wrapper -->

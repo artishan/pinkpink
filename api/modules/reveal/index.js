@@ -56,7 +56,7 @@ exports.getSlide = function(request, reply) {
 }
 
 exports.getSlides = function(request, reply) {
-  db.slide.find({deck_id: request.params.deckId}).sort({ x: 1 }).exec(function(err, slides){
+  db.slide.find({deck_id: request.params.deckId}).sort({ x: 1, y: 1 }).exec(function(err, slides){
     console.log(slides);
     return reply(slides);
   });

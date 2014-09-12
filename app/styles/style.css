@@ -1,5 +1,8 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 body{
   padding: 0;
+  font-family: 'Nanum Gothic', serif !important;﻿
 }
 
 a{
@@ -17,7 +20,7 @@ a{
 }
 
 #wrapper.toggled {
-    padding-left: 100px;
+    padding-left: 110px;
 }
 
 #wrapper,
@@ -30,16 +33,18 @@ a{
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 100px;
+    top: 10px;
+    left: 110px;
     width: 0;
-    height: 100%;
+    height: 500px;
     margin-left: -100px;
     overflow-y: auto;
-    background: #000;
+    background: #222;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    border-radius:5px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -48,7 +53,7 @@ a{
 
 #page-content-wrapper {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -68,7 +73,7 @@ a{
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
+    text-indent: 15px;
     line-height: 40px;
 }
 
@@ -129,4 +134,10 @@ a{
         position: relative;
         margin-right: 0;
     }
+}
+
+.panel>.table {
+  display: block;
+  height: 600px;
+  overflow-y: scroll;
 }
