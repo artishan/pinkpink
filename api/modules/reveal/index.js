@@ -1,5 +1,13 @@
 var db = require("./lib/nedb");
 
+exports.getManager = function(request, reply) {
+  var manager = {
+    'table': 'dbtable',
+    'route': 'route'
+  };
+  return reply(mangaer);
+};
+
 exports.getDecks = function(request, reply) {
   db.deck.find({}, function(err, decks){
     return reply(decks);

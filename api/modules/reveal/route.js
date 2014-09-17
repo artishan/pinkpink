@@ -3,6 +3,12 @@ var Joi = require('joi');
 
 module.exports = [
   { method: 'GET',
+    path: '/reveal/manager',
+    config: {
+      handler: reveal.getManager
+    }
+  },
+  { method: 'GET',
     path: '/reveal/decks',
     config: {
       handler: reveal.getDecks
@@ -11,6 +17,9 @@ module.exports = [
   { method: 'GET',
     path: '/reveal/deck/{deckId}',
     config: {
+      description: 'Get deck',
+      notes: 'Returns a deck item by the id passed in the path',
+      tags: ['reveal'],
       handler: reveal.getDeck
     }
   },
